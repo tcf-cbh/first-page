@@ -17,6 +17,12 @@
             background: var(--gradient-bg);
             color: var(--primary-color);
             line-height: 1.6;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        body.fade-out {
+            opacity: 0;
         }
 
         header {
@@ -89,6 +95,7 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            background-attachment: fixed;
         }
 
         .hero h2 {
@@ -114,11 +121,19 @@
             transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
             cursor: pointer;
             backdrop-filter: blur(10px);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card.animate {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .product-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            transform: perspective(1000px) rotateX(5deg) rotateY(5deg) translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
 
         .product-card img {
@@ -132,6 +147,32 @@
 
         .product-card:hover img {
             transform: scale(1.05);
+        }
+
+        .product-card .product-image {
+            width: 100%;
+            height: 220px;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-card.gpu .product-image {
+            background: linear-gradient(135deg, #6C5CE7, #8E44AD);
+        }
+
+        .product-card.cpu .product-image {
+            background: linear-gradient(135deg, #00B894, #00CEC9);
+        }
+
+        .product-card.ssd .product-image {
+            background: linear-gradient(135deg, #FDCB6E, #E17055);
         }
 
         .contact-section {
@@ -232,58 +273,6 @@
             background: #5a4dcc;
         }
 
-        .hardware-form {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            display: none;
-        }
-
-        .hardware-form.active {
-            display: block;
-        }
-
-        .hardware-form table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .hardware-form th, .hardware-form td {
-            padding: 1rem;
-            border: 1px solid #e0e0e0;
-            text-align: left;
-        }
-
-        .hardware-form th {
-            background: var(--accent-color);
-            color: white;
-        }
-
-        .hardware-form input {
-            width: 100%;
-            padding: 0.5rem;
-            border: 1px solid #e0e0e0;
-            border-radius: 4px;
-        }
-
-        .show-form-btn {
-            display: block;
-            margin: 2rem auto;
-            padding: 1rem 2rem;
-            background: var(--accent-color);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-
-        .show-form-btn:hover {
-            background: #5a4dcc;
-        }
-
         @media (max-width: 768px) {
             .product-grid {
                 grid-template-columns: 1fr;
@@ -323,7 +312,24 @@
     </section>
 
     <main class="product-grid" id="products">
-        <!-- 产品卡片同上，保持原有结构 -->
+        <!-- 显卡 -->
+        <div class="product-card gpu">
+            <div class="product-image">显卡</div>
+            <h3>高性能显卡</h3>
+            <p>为游戏和图形设计提供强大的图形处理能力，支持4K分辨率和光线追踪技术。</p>
+        </div>
+        <!-- CPU -->
+        <div class="product-card cpu">
+            <div class="product-image">CPU</div>
+            <h3>多核处理器</h3>
+            <p>高性能多核处理器，适合多任务处理、视频编辑和3D渲染。</p>
+        </div>
+        <!-- 固态硬盘 -->
+        <div class="product-card ssd">
+            <div class="product-image">固态硬盘</div>
+            <h3>高速存储</h3>
+            <p>极速读写速度，提升系统响应速度和文件传输效率。</p>
+        </div>
     </main>
 
     <section class="contact-section" id="contact">
@@ -410,11 +416,19 @@
         // 表单交互
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const notification = document.getElementById('notification');
-            notification.classList.add('show');
-            setTimeout(() => notification.classList.remove('show'), 3000);
+            showNotification('提交成功！我们将尽快与您联系。');
             this.reset();
         });
+
+        // 动态通知系统
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.classList.add('notification');
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            setTimeout(() => notification.classList.add('show'), 10);
+            setTimeout(() => notification.remove(), 3000);
+        }
 
         // 视差效果
         window.addEventListener('mousemove', (e) => {
@@ -430,11 +444,39 @@
             canvas.height = window.innerHeight;
         });
 
-        // 显示硬件配置表格
-        function showHardwareForm() {
-            const form = document.getElementById('hardwareForm');
-            form.classList.toggle('active');
-        }
+        // 动态加载产品卡片
+        const productCards = document.querySelectorAll('.product-card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        productCards.forEach(card => observer.observe(card));
+
+        // 动态表单验证
+        document.querySelectorAll('.form-input').forEach(input => {
+            input.addEventListener('input', () => {
+                if (input.checkValidity()) {
+                    input.style.borderColor = '#6C5CE7';
+                } else {
+                    input.style.borderColor = '#ff4757';
+                }
+            });
+        });
+
+        // 动态页面过渡效果
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (link.href.includes('#')) return; // 忽略锚点链接
+                e.preventDefault();
+                document.body.classList.add('fade-out');
+                setTimeout(() => window.location.href = link.href, 500);
+            });
+        });
     </script>
 </body>
 </html>
