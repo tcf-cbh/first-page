@@ -9,9 +9,6 @@
             --primary-color: #2a2a2a;
             --accent-color: #6C5CE7;
             --gradient-bg: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            --card-bg: rgba(255, 255, 255, 0.95);
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
         }
 
         body {
@@ -31,7 +28,7 @@
         header {
             background: rgba(42, 42, 42, 0.95);
             color: white;
-            padding: 4rem 0;
+            padding: 2rem 0;
             text-align: center;
             backdrop-filter: blur(10px);
             position: relative;
@@ -50,18 +47,6 @@
             z-index: -1;
         }
 
-        header h1 {
-            font-size: 3.5rem;
-            margin: 0;
-            animation: fadeInDown 1s ease;
-        }
-
-        header p {
-            font-size: 1.2rem;
-            margin: 0.5rem 0 0;
-            animation: fadeInUp 1s ease;
-        }
-
         nav {
             display: flex;
             justify-content: center;
@@ -70,7 +55,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: var(--shadow);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
         }
 
         nav a {
@@ -78,7 +63,7 @@
             padding: 1.2rem 2rem;
             text-decoration: none;
             font-weight: 500;
-            transition: var(--transition);
+            transition: all 0.3s ease;
             position: relative;
         }
 
@@ -90,7 +75,7 @@
             width: 0;
             height: 3px;
             background: var(--accent-color);
-            transition: var(--transition);
+            transition: all 0.3s ease;
         }
 
         nav a:hover {
@@ -117,13 +102,6 @@
             font-size: 3.5rem;
             margin: 0;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 1.5s ease;
-        }
-
-        .hero h3 {
-            font-size: 1.5rem;
-            margin: 1rem 0 0;
-            animation: fadeIn 2s ease;
         }
 
         .product-grid {
@@ -136,20 +114,25 @@
         }
 
         .product-card {
-            background: var(--card-bg);
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 20px;
             padding: 1.5rem;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
             cursor: pointer;
             backdrop-filter: blur(10px);
             opacity: 0;
             transform: translateY(20px);
-            animation: fadeInUp 0.5s ease forwards;
+            transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card.animate {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .product-card:hover {
-            transform: translateY(-10px) scale(1.02);
+            transform: perspective(1000px) rotateX(5deg) rotateY(5deg) translateY(-10px) scale(1.02);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
 
@@ -159,7 +142,7 @@
             object-fit: contain;
             border-radius: 12px;
             margin-bottom: 1rem;
-            transition: var(--transition);
+            transition: transform 0.3s ease;
         }
 
         .product-card:hover img {
@@ -196,9 +179,9 @@
             max-width: 800px;
             margin: 4rem auto;
             padding: 2rem;
-            background: var(--card-bg);
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
-            box-shadow: var(--shadow);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
         }
 
         .contact-form {
@@ -216,7 +199,7 @@
             border: 2px solid #e0e0e0;
             border-radius: 8px;
             font-size: 1rem;
-            transition: var(--transition);
+            transition: all 0.3s ease;
         }
 
         .form-input:focus {
@@ -233,13 +216,35 @@
             border-radius: 8px;
             font-size: 1rem;
             cursor: pointer;
-            transition: var(--transition);
+            transition: all 0.3s ease;
             justify-self: start;
         }
 
         .submit-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: -300px;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .notification.show {
+            right: 20px;
+        }
+
+        .particles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
         }
 
         footer {
@@ -251,27 +256,79 @@
             backdrop-filter: blur(5px);
         }
 
-        footer p {
-            margin: 0.5rem 0;
+        .toggle-particles {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--accent-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            z-index: 1000;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .toggle-particles:hover {
+            background: #5a4dcc;
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+            
+            nav {
+                flex-wrap: wrap;
+            }
+            
+            nav a {
+                flex: 1 1 100%;
+                text-align: center;
+            }
+            #popup {
+            display: none; /* 默认隐藏 */
+            position: fixed; /* 固定在屏幕上 */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* 居中 */
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            z-index: 1000; /* 确保在最上层 */
+            width: 300px; /* 弹窗宽度 */
+            text-align: center;
         }
 
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* 遮罩层样式 */
+        #overlay {
+            display: none; /* 默认隐藏 */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* 半透明黑色 */
+            z-index: 999; /* 在弹窗下层 */
+        }
+
+        /* 关闭按钮样式 */
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
+    <canvas class="particles"></canvas>
+    <button class="toggle-particles" onclick="toggleParticles()">停止粒子运动</button>
+
     <header>
         <h1>TCF</h1>
         <p>重新定义你的电脑</p>
@@ -290,6 +347,15 @@
         <h2>打造属于您的个性电脑</h2>
         <h3>|TCF为你提供细致服务</h3>
     </section>
+    <script>
+        function showText() {
+            var text = document.getElementById("displayText");
+            if (text.style.display === "none") {
+                text.style.display = "block";
+            } else {
+                text.style.display = "none";
+            }
+    </script>
 
     <main class="product-grid" id="products">
         <!-- 显卡 -->
@@ -330,9 +396,182 @@
         <p class="form-notice">提交即表示同意我们的服务协议，你会直接跳转到微信与客服联系</p>
     </section>
 
+    <div class="form-group" style="text-align: center;">
+    <a href="https://www.wjx.cn/vm/e2jFn33.aspx" class="submit-btn">填写硬件配置(建议填写入口)</a>
+    
     <footer>
+        <a href="https://www.wjx.cn/vm/wjcJuA7.aspx" class="submit-btn">提供宝贵建议</a>
         <p>© 2024 TCF | 硬件配置兴趣团体</p>
         <p style="font-size: 0.8rem; margin-top: 1rem;">TCF目前还是小团体，网站正在逐步改进，请谅解...</p>
     </footer>
+
+    <script>
+        // 粒子动画
+        let particlesActive = true;
+        const canvas = document.querySelector('.particles');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.velocity = Math.random() * 2 + 1;
+                this.size = Math.random() * 2 + 1;
+                this.alpha = Math.random() * 0.5 + 0.2;
+            }
+
+            update() {
+                this.y += this.velocity;
+                if (this.y > canvas.height) this.reset();
+            }
+
+            draw() {
+                ctx.fillStyle = `rgba(108, 92, 231, ${this.alpha})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        const particles = Array(100).fill().map(() => new Particle());
+
+        function animate() {
+            if (particlesActive) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(particle => {
+                    particle.update();
+                    particle.draw();
+                });
+            }
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        function toggleParticles() {
+            particlesActive = !particlesActive;
+            const button = document.querySelector('.toggle-particles');
+            button.textContent = particlesActive ? '停止粒子运动' : '开启粒子运动';
+        }
+
+        // 表单交互
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showNotification('提交成功！我们将尽快与您联系。');
+            this.reset();
+        });
+
+        // 动态通知系统
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.classList.add('notification');
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            setTimeout(() => notification.classList.add('show'), 10);
+            setTimeout(() => notification.remove(), 3000);
+        }
+
+        // 视差效果
+        window.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            document.documentElement.style.setProperty('--gradient-bg', 
+                `linear-gradient(${x * 45 + 135}deg, #f5f7fa ${y * 20}%, #c3cfe2 100%)`);
+        });
+
+        // 响应式调整
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // 动态加载产品卡片
+        const productCards = document.querySelectorAll('.product-card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        productCards.forEach(card => observer.observe(card));
+
+        // 动态表单验证
+        document.querySelectorAll('.form-input').forEach(input => {
+            input.addEventListener('input', () => {
+                if (input.checkValidity()) {
+                    input.style.borderColor = '#6C5CE7';
+                } else {
+                    input.style.borderColor = '#ff4757';
+                }
+            });
+        });
+
+        // 动态页面过渡效果
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (link.href.includes('#')) return; // 忽略锚点链接
+                e.preventDefault();
+                document.body.classList.add('fade-out');
+                setTimeout(() => window.location.href = link.href, 500);
+            });
+        });
+    </script>
+</body>
+</html>
+        // 页面初始化加载处理
+        document.addEventListener('DOMContentLoaded', function() {
+            // 检测是否是返回访问
+            if (sessionStorage.getItem('pageTransition') === 'back') {
+                sessionStorage.removeItem('pageTransition');
+                document.body.classList.add('loaded');
+            } else {
+                // 新访问直接显示
+                setTimeout(() => {
+                    document.body.classList.add('loaded');
+                }, 100);
+            }
+        });
+
+        // 修改后的页面过渡逻辑
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const url = new URL(link.href);
+                
+                // 排除处理：外部链接、锚点、特殊链接
+                if (url.origin !== location.origin || 
+                    url.hash || 
+                    url.href.includes('topic.expreview.com') || 
+                    url.href.includes('wjx.cn') ||
+                    url.href.includes('work.weixin.qq.com')) {
+                    return;
+                }
+
+                e.preventDefault();
+                document.body.classList.remove('loaded');
+                sessionStorage.setItem('pageTransition', 'forward');
+                
+                setTimeout(() => {
+                    window.location.href = link.href;
+                }, 500);
+            });
+        });
+
+        // 浏览器历史记录监听
+        window.addEventListener('pageshow', function(event) {
+            // 检测页面是否从缓存加载（后退返回）
+            if (event.persisted) {
+                sessionStorage.setItem('pageTransition', 'back');
+                document.body.classList.add('loaded');
+            }
+        });
+    </script>
 </body>
 </html>
