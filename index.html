@@ -361,6 +361,46 @@
         .modal-close-btn:hover {
             background: #5a4dcc;
         }
+
+        /* 新增页脚按钮样式 */
+        .footer-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-btn {
+            background: var(--accent-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .footer-btn:hover {
+            background: #5a4dcc;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .footer-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-btn {
+                width: 80%;
+                margin-bottom: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -446,12 +486,14 @@
         <p class="form-notice">提交即表示同意我们的用户协议，你会直接跳转到微信与客服联系</p>
     </section>
 
-    <div class="form-group" style="text-align: center;">
-    <a href="https://www.wjx.cn/vm/e2jFn33.aspx" class="submit-btn">填写硬件配置(建议填写入口)</a>
-    
     <footer>
-        <a href="https://www.wjx.cn/vm/wjcJuA7.aspx" class="submit-btn">提供宝贵建议</a>
-        <button class="submit-btn" onclick="openUserAgreementModal()" style="margin-top: 1rem;">查看用户协议</button>
+        <div class="footer-buttons">
+            <a href="#top" class="footer-btn">返回顶部</a>
+            <a href="https://work.weixin.qq.com/kfid/kfc35910d65105a8c00" class="footer-btn">联系我们</a>
+            <a href="https://www.wjx.cn/vm/wjcJuA7.aspx" class="footer-btn">提供建议</a>
+            <button class="footer-btn" onclick="sharePage()">分享页面</button>
+            <button class="footer-btn" onclick="openUserAgreementModal()">用户协议</button>
+        </div>
         <p>© 2025 TCF | 硬件配置兴趣团体</p>
         <p style="font-size: 0.8rem; margin-top: 1rem;">不建议使用手机进入网页 | 导航栏会挡住大部分的视野 | 移动端请复制到自带浏览器</p>
         <p style="font-size: 0.8rem; margin-top: 1rem;">TCF目前还是小团体，网站正在逐步改进，请谅解...</p>
@@ -641,6 +683,22 @@
                 closeUserAgreementModal();
             }
         });
+
+        // 分享页面功能
+        function sharePage() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'TCF | 配置单填写 | 装机指导',
+                    url: window.location.href
+                }).then(() => {
+                    showNotification('感谢分享！');
+                }).catch((error) => {
+                    showNotification('分享失败，请重试。');
+                });
+            } else {
+                showNotification('您的浏览器不支持分享功能，请手动复制链接。');
+            }
+        }
     </script>
 </body>
 </html>
