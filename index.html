@@ -296,7 +296,9 @@
                 flex: 1 1 100%;
                 text-align: center;
             }
-            /* 新增用户协议弹窗样式 */
+        }
+
+        /* 新增用户协议弹窗样式 */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -452,7 +454,8 @@
         <p style="font-size: 0.8rem; margin-top: 1rem;">不建议使用手机进入网页 | 导航栏会挡住大部分的视野 | 移动端请复制到自带浏览器</p>
         <p style="font-size: 0.8rem; margin-top: 1rem;">TCF目前还是小团体，网站正在逐步改进，请谅解...</p>
     </footer>
- 
+
+    <!-- 用户协议弹窗 -->
     <div class="modal-overlay" id="userAgreementModal">
         <div class="modal-content">
             <h2>用户协议</h2>
@@ -468,6 +471,8 @@
                 4. TCF不对因不可抗力或第三方原因导致的服务中断或数据丢失承担责任。
                 <br><br>
                 5. 如果您不同意本协议的条款，请立即停止使用TCF服务。
+                <br><br>
+                6. 不允许用户修改导航栏中【团队信息】【旗舰产品】所显示页面的文本内容。
             </p>
             <button class="modal-close-btn" onclick="closeUserAgreementModal()">关闭</button>
         </div>
@@ -594,57 +599,8 @@
                 setTimeout(() => window.location.href = link.href, 500);
             });
         });
-    </script>
-</body>
-</html>
-    <script>
-        // 页面初始化加载处理
-        document.addEventListener('DOMContentLoaded', function() {
-            // 检测是否是返回访问
-            if (sessionStorage.getItem('pageTransition') === 'back') {
-                sessionStorage.removeItem('pageTransition');
-                document.body.classList.add('loaded');
-            } else {
-                // 新访问直接显示
-                setTimeout(() => {
-                    document.body.classList.add('loaded');
-                }, 100);
-            }
-        });
 
-        // 修改后的页面过渡逻辑
-        document.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                const url = new URL(link.href);
-                
-                // 排除处理：外部链接、锚点、特殊链接
-                if (url.origin !== location.origin || 
-                    url.hash || 
-                    url.href.includes('topic.expreview.com') || 
-                    url.href.includes('wjx.cn') ||
-                    url.href.includes('work.weixin.qq.com')) {
-                    return;
-                }
-
-                e.preventDefault();
-                document.body.classList.remove('loaded');
-                sessionStorage.setItem('pageTransition', 'forward');
-                
-                setTimeout(() => {
-                    window.location.href = link.href;
-                }, 500);
-            });
-        });
-
-        // 浏览器历史记录监听
-        window.addEventListener('pageshow', function(event) {
-            // 检测页面是否从缓存加载（后退返回）
-            if (event.persisted) {
-                sessionStorage.setItem('pageTransition', 'back');
-                document.body.classList.add('loaded');
-            }
-        });
-         // 新增用户协议弹窗功能
+        // 新增用户协议弹窗功能
         function openUserAgreementModal() {
             const modal = document.getElementById('userAgreementModal');
             modal.classList.add('active');
