@@ -296,6 +296,69 @@
                 flex: 1 1 100%;
                 text-align: center;
             }
+            /* 新增用户协议弹窗样式 */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-20px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-content h2 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .modal-content p {
+            line-height: 1.6;
+            color: var(--primary-color);
+        }
+
+        .modal-close-btn {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        .modal-close-btn:hover {
+            background: #5a4dcc;
+        }
     </style>
 </head>
 <body>
@@ -384,6 +447,7 @@
     
     <footer>
         <a href="https://www.wjx.cn/vm/wjcJuA7.aspx" class="submit-btn">提供宝贵建议</a>
+        <button class="submit-btn" onclick="openUserAgreementModal()" style="margin-top: 1rem;">查看用户协议</button>
         <p>© 2025 TCF | 硬件配置兴趣团体</p>
         <p style="font-size: 0.8rem; margin-top: 1rem;">不建议使用手机进入网页 | 导航栏会挡住大部分的视野 | 移动端请复制到自带浏览器</p>
         <p style="font-size: 0.8rem; margin-top: 1rem;">TCF目前还是小团体，网站正在逐步改进，请谅解...</p>
@@ -558,6 +622,23 @@
             if (event.persisted) {
                 sessionStorage.setItem('pageTransition', 'back');
                 document.body.classList.add('loaded');
+            }
+        });
+         // 新增用户协议弹窗功能
+        function openUserAgreementModal() {
+            const modal = document.getElementById('userAgreementModal');
+            modal.classList.add('active');
+        }
+
+        function closeUserAgreementModal() {
+            const modal = document.getElementById('userAgreementModal');
+            modal.classList.remove('active');
+        }
+
+        // 点击弹窗外部关闭弹窗
+        document.getElementById('userAgreementModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeUserAgreementModal();
             }
         });
     </script>
