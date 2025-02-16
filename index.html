@@ -488,7 +488,7 @@
 
     <footer>
         <div class="footer-buttons">
-            <a href="#top" class="footer-btn">返回顶部</a>
+            <button class="footer-btn" onclick="scrollToTop()">返回顶部</button>
             <a href="https://work.weixin.qq.com/kfid/kfc35910d65105a8c00" class="footer-btn">联系我们</a>
             <a href="https://www.wjx.cn/vm/wjcJuA7.aspx" class="footer-btn">提供建议</a>
             <button class="footer-btn" onclick="sharePage()">分享页面</button>
@@ -698,6 +698,14 @@
             } else {
                 showNotification('您的浏览器不支持分享功能，请手动复制链接。');
             }
+        }
+
+        // 返回顶部功能
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // 平滑滚动
+            });
         }
     </script>
 </body>
