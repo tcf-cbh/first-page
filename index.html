@@ -224,6 +224,7 @@
             border-radius: 8px;
             font-size: 1rem;
             transition: all 0.3s ease;
+            box-sizing: border-box; /* 确保宽度包含 padding 和 border */
         }
 
         .form-input:focus {
@@ -506,7 +507,7 @@
                 <input type="tel" class="form-input" placeholder="联系号码" pattern="[0-9]{11}" required>
             </div>
             <div class="form-group">
-                <textarea class="form-input" rows="5" placeholder="您的特别需求" required></textarea>
+                <textarea class="form-input" rows="5" placeholder="您的特别需求" required style="resize: vertical;"></textarea>
             </div>
             <a href="https://work.weixin.qq.com/kfid/kfc35910d65105a8c00" class="submit-btn">开启专属服务</a>
         </form>
