@@ -259,6 +259,7 @@
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 1000; /* 确保通知在最上层 */
         }
 
         .notification.show {
@@ -327,7 +328,7 @@
             box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
         }
 
-        /* 用户协议弹窗样式 */
+        /* 弹窗样式 */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -338,7 +339,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 1000;
+            z-index: 1000; /* 确保弹窗在最上层 */
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -431,8 +432,8 @@
     </header>
 
     <nav>
-        <a href="https://txtpad.cn/TCF%E5%9B%A2%E9%98%9F%E4%BB%8B%E7%BB%8D/">团队介绍</a>
-        <a href="https://txtpad.cn/TCF%E6%97%97%E8%88%B0%E4%BA%A7%E5%93%81%E4%BB%8B%E7%BB%8D">旗舰产品</a>
+        <a href="#" onclick="openTeamModal()">团队介绍</a>
+        <a href="#" onclick="openProductModal()">旗舰产品</a>
         <a href="https://work.weixin.qq.com/kfid/kfc35910d65105a8c00">装机指导</a>
         <a href="https://topic.expreview.com/GPU/">显卡性能天梯</a>
         <a href="https://topic.expreview.com/CPU/">CPU性能天梯</a>
@@ -527,6 +528,32 @@
         <p style="font-size: 0.8rem; margin-top: 1rem;">TCF目前还是小团体，网站正在逐步改进，请谅解...</p>
         <p style="font-size: 0.8rem; margin-top: 1rem;">版本号：1.01.0/1.01.0</p>
     </footer>
+
+    <!-- 团队介绍弹窗 -->
+    <div class="modal-overlay" id="teamModal">
+        <div class="modal-content">
+            <h2>团队介绍</h2>
+            <p>
+                TCF 团队由一群热爱硬件和技术的专业人士组成，致力于为用户提供最优质的硬件定制化服务。
+                <br><br>
+                我们的团队成员包括硬件工程师、软件开发者、设计师和技术支持专家，确保每一位用户都能获得最佳体验。
+            </p>
+            <button class="modal-close-btn" onclick="closeTeamModal()">关闭</button>
+        </div>
+    </div>
+
+    <!-- 旗舰产品弹窗 -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal-content">
+            <h2>旗舰产品</h2>
+            <p>
+                TCF 旗舰产品包括高性能显卡、多核处理器、高速固态硬盘等，满足游戏、设计和办公等多种需求。
+                <br><br>
+                我们的产品经过严格测试，确保性能和稳定性达到最佳水平。
+            </p>
+            <button class="modal-close-btn" onclick="closeProductModal()">关闭</button>
+        </div>
+    </div>
 
     <!-- 用户协议弹窗 -->
     <div class="modal-overlay" id="userAgreementModal">
@@ -740,6 +767,41 @@
                 behavior: 'smooth' // 平滑滚动
             });
         }
+
+        // 团队介绍弹窗功能
+        function openTeamModal() {
+            const modal = document.getElementById('teamModal');
+            modal.classList.add('active');
+        }
+
+        function closeTeamModal() {
+            const modal = document.getElementById('teamModal');
+            modal.classList.remove('active');
+        }
+
+        // 旗舰产品弹窗功能
+        function openProductModal() {
+            const modal = document.getElementById('productModal');
+            modal.classList.add('active');
+        }
+
+        function closeProductModal() {
+            const modal = document.getElementById('productModal');
+            modal.classList.remove('active');
+        }
+
+        // 点击弹窗外部关闭弹窗
+        document.getElementById('teamModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeTeamModal();
+            }
+        });
+
+        document.getElementById('productModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeProductModal();
+            }
+        });
     </script>
 </body>
 </html>
