@@ -326,6 +326,57 @@
             box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
         }
 
+        /* 用户协议弹窗样式 */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .modal-close-btn {
+            background: var(--accent-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close-btn:hover {
+            background: #5a4dcc;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+        }
+
         @media (max-width: 768px) {
             .hero h2 {
                 font-size: 2rem;
@@ -498,7 +549,7 @@
                 <br><br>
                 8. 在投诉时，如果谎报投诉信息，TCF将不再对您提供服务，请自觉退出使用TCF平台，客服也将不会再对您的信息进行回复。
                 <br><br>
-                9.TCF(Total Customization Framework)是一个专注于电脑硬件定制化的品牌或服务框架，致力于为用户提供从硬件配置到装机指导的一站式服务。
+                9.TCF(Total Customization Framework)是一个专注于电脑硬件定制化的品牌或服务框架，致力于为用户提供从硬件配置到装机指导的一站式服务。TCF的核心价值在于:
                 <br><br>
                 10.全面性（Total）：覆盖从 CPU、显卡、主板到散热系统、机箱等所有硬件组件的定制配置。
                 <br><br>
