@@ -123,6 +123,12 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             cursor: pointer;
             backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
         }
 
         .product-card img {
