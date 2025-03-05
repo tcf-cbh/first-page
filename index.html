@@ -317,6 +317,53 @@
             text-decoration: underline;
         }
 
+        /* 新增品牌图片按钮样式 */
+        .brand-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .brand-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .brand-btn img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .brand-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .brand-btn::after {
+            content: attr(data-brand);
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .brand-btn:hover::after {
+            opacity: 1;
+        }
+
         /* 弹窗样式 */
         .modal-overlay {
             position: fixed;
@@ -521,10 +568,28 @@
             <button class="footer-btn" onclick="sharePage()">分享页面</button>
             <button class="footer-btn" onclick="openUserAgreementModal()">用户协议</button>
         </div>
+        <!-- 新增品牌图片按钮 -->
+        <div class="brand-buttons">
+            <a href="https://www.intel.cn" class="brand-btn" data-brand="英特尔">
+                <img src="https://img.expreview.com/brands/logo/intel.png" alt="英特尔">
+            </a>
+            <a href="https://www.amd.com" class="brand-btn" data-brand="AMD">
+                <img src="https://img.expreview.com/brands/logo/amd.png" alt="AMD">
+            </a>
+            <a href="https://www.nvidia.cn" class="brand-btn" data-brand="英伟达">
+                <img src="https://img.expreview.com/brands/logo/nv.png" alt="英伟达">
+            </a>
+            <a href="https://www.asus.com.cn" class="brand-btn" data-brand="华硕">
+                <img src="https://img.expreview.com/brands/logo/asus.png" alt="华硕">
+            </a>
+            <a href="https://www.colorful.cn" class="brand-btn" data-brand="七彩虹">
+                <img src="https://img.expreview.com/brands/logo/colorful.png" alt="七彩虹">
+            </a>
+        </div>
         <p>© 2025 TCF | 硬件管理定制化服务框架</p>
         <p style="font-size: 0.8rem; margin-top: 1rem;">网站现已对移动端开放 | 移动端页面仍然会有不协调 | 请谅解</p>
         <p style="font-size: 0.8rem; margin-top: 1rem;">TCF目前还是小团体，网站正在逐步改进，请谅解...</p>
-        <p style="font-size: 0.8rem; margin-top: 1rem;">版本号：1.02.2/1.02.2</p>
+        <p style="font-size: 0.8rem; margin-top: 1rem;">版本号：1.03.2/1.03.2</p>
     </footer>
 
     <!-- 团队介绍弹窗 -->
@@ -587,13 +652,13 @@
             <p>
                 intel处理器: Intel Core Ultra 5 230F 
                 <br><br>
-                intel显卡：Arc B570
+                nvidia显卡: rtx5090
                 <br><br>
                 AMD显卡: RX 9070 XT
                 <br><br>
                 AMD处理器：AMD Ryzen 7 9800X3D
                 <br><br>
-                nvidia显卡: rtx5090
+                intel显卡：Arc B570
             </p>
             <button class="modal-close-btn" onclick="closeProductModal()">关闭</button>
         </div>
@@ -648,7 +713,7 @@
                 <br><br>
                 21.京东客服链接非TCF恶意引入，且京东店铺售后出现的问题与TCF无任何关系。TCF只提供快捷的京东购买入口。
                 <br><br>
-                22.网页中涉及所有TCF客服均无危险，进入微信之后跳出的窗口可能会提示：“该企业尚未经过认证，安全性未知，请注意在沟通中保护个人隐私和财产安全。”属于正常现象，点击弹窗下面【发起聊天】按钮可以继续与TCF客服进行对话。原因：TCF为3人小团体，企业微信团队认证费目前并没有太多的经费，后续有时间会在企业微信认证。
+                22.网页中涉及所有微信TCF客服均无泄露隐私信息的危险，进入微信之后可能会跳出窗口提示：“该企业尚未经过认证，安全性未知，请注意在沟通中保护个人隐私和财产安全。”属于正常现象，点击弹窗下面【发起聊天】按钮可以继续与TCF客服进行对话。原因：TCF为3人小团体，企业微信团队认证费目前并没有太多的经费，后续有时间会在企业微信认证。
             </p>
             <button class="modal-close-btn" onclick="closeUserAgreementModal()">关闭</button>
         </div>
