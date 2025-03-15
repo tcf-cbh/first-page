@@ -120,6 +120,7 @@
         .hero {
             height: 50vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
@@ -143,6 +144,18 @@
         .hero h3 {
             font-size: 1.5rem;
             margin: 0.5rem 0 0;
+        }
+
+        /* 新增时间日期模块样式 */
+        .datetime {
+            margin-top: 1.5rem;
+            font-size: 1.2rem;
+            color: var(--text-color);
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            backdrop-filter: blur(var(--blur-intensity));
+            box-shadow: var(--button-shadow);
         }
 
         .product-grid {
@@ -586,6 +599,8 @@
     <section class="hero">
         <h2>打造属于您的个性电脑</h2>
         <h3>|TCF为你提供细致服务</h3>
+        <!-- 新增时间日期模块 -->
+        <div class="datetime" id="datetime"></div>
     </section>
 
     <main class="product-grid" id="products">
@@ -695,7 +710,7 @@
         <p>© 2025 TCF | 硬件管理定制化服务框架</p>
         <p style="font-size: 0.8rem; margin-top: 1rem;">网站现已对移动端开放 | 移动端页面仍然会有不协调 | 请谅解</p>
         <p style="font-size: 0.8rem; margin-top: 1rem;">TCF目前还是小团体，网站正在逐步改进，请谅解...</p>
-        <p style="font-size: 0.8rem; margin-top: 1rem;">版本号：2.00.0/2.00.0</p>
+        <p style="font-size: 0.8rem; margin-top: 1rem;">版本号：2.00.1/2.00.1</p>
     </footer>
 
     <!-- 团队介绍弹窗 -->
@@ -813,7 +828,7 @@
                 <br><br>
                 18.用户在接受装机指导时，需要阅读该协议，若因为用户没有仔细阅读该协议的内容造成的主观侵权TCF不负责。
                 <br><br>
-                19.装机指导为微信视频通话，在线指导。若不同意视频电话，则无法享受该服务。
+                19.装机指导为微信视频通话，在线指导。若不同意视频电话，则无法享受该服务
                 <br><br>
                 20.第三方网站的客服问题与TCF无关，请注意辨别。若因为第三方客服问题联系TCF客服的，TCF不会给予处理。
                 <br><br>
@@ -986,6 +1001,26 @@
                 darkModeToggle.textContent = '☾';
             }
         }
+
+        // 时间日期模块
+        function updateDateTime() {
+            const now = new Date();
+            const date = now.toLocaleDateString('zh-CN', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+            });
+            const time = now.toLocaleTimeString('zh-CN', {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+            });
+            document.getElementById('datetime').textContent = `${date} ${time}`;
+        }
+
+        // 每秒更新时间
+        setInterval(updateDateTime, 1000);
+        updateDateTime(); // 初始化时间
     </script>
 </body>
 </html>
