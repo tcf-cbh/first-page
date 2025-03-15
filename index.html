@@ -4,20 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TCF | Total Customization Framework</title>
-    <link rel="icon" href="favicon.ico" type="F:\Desktop\TCF\tcf.ico">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style>
         :root {
             --primary-color: #2a2a2a;
             --accent-color: #6C5CE7;
             --gradient-bg: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             --text-color: #2a2a2a;
-            --header-bg: rgba(42, 42, 42, 0.95);
-            --header-text: white;
-            --card-bg: rgba(255, 255, 255, 0.9);
-            --footer-bg: rgba(42, 42, 42, 0.95);
-            --footer-text: white;
-            --nav-bg: rgba(255, 255, 255, 0.9);
+            --header-bg: rgba(255, 255, 255, 0.8);
+            --header-text: #2a2a2a;
+            --card-bg: rgba(255, 255, 255, 0.8);
+            --footer-bg: rgba(255, 255, 255, 0.8);
+            --footer-text: #2a2a2a;
+            --nav-bg: rgba(255, 255, 255, 0.8);
             --nav-text: #2a2a2a;
+            --blur-intensity: 10px;
+            --button-gradient: linear-gradient(135deg, #6C5CE7, #8E44AD);
+            --button-hover-gradient: linear-gradient(135deg, #8E44AD, #6C5CE7);
+            --button-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         body {
@@ -33,13 +37,15 @@
             --primary-color: #f5f5f5;
             --text-color: #f5f5f5;
             --gradient-bg: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-            --header-bg: rgba(26, 26, 26, 0.95);
+            --header-bg: rgba(42, 42, 42, 0.8);
             --header-text: #f5f5f5;
-            --card-bg: rgba(42, 42, 42, 0.9);
-            --footer-bg: rgba(26, 26, 26, 0.95);
+            --card-bg: rgba(42, 42, 42, 0.8);
+            --footer-bg: rgba(42, 42, 42, 0.8);
             --footer-text: #f5f5f5;
-            --nav-bg: rgba(42, 42, 42, 0.9);
+            --nav-bg: rgba(42, 42, 42, 0.8);
             --nav-text: #f5f5f5;
+            --button-gradient: linear-gradient(135deg, #8E44AD, #6C5CE7);
+            --button-hover-gradient: linear-gradient(135deg, #6C5CE7, #8E44AD);
         }
 
         header {
@@ -47,9 +53,12 @@
             color: var(--header-text);
             padding: 2rem 1rem;
             text-align: center;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(var(--blur-intensity));
             position: relative;
             overflow: hidden;
+            border-radius: 12px;
+            margin: 1rem;
+            box-shadow: var(--button-shadow);
         }
 
         header::before {
@@ -68,12 +77,14 @@
             display: flex;
             justify-content: center;
             background: var(--nav-bg);
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(var(--blur-intensity));
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--button-shadow);
             flex-wrap: wrap;
+            border-radius: 12px;
+            margin: 1rem;
         }
 
         nav a {
@@ -116,6 +127,11 @@
             overflow: hidden;
             background-attachment: fixed;
             padding: 0 1rem;
+            border-radius: 12px;
+            margin: 1rem;
+            backdrop-filter: blur(var(--blur-intensity));
+            background: var(--card-bg);
+            box-shadow: var(--button-shadow);
         }
 
         .hero h2 {
@@ -142,9 +158,9 @@
             background: var(--card-bg);
             border-radius: 20px;
             padding: 1.5rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            box-shadow: var(--button-shadow);
             cursor: pointer;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(var(--blur-intensity));
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -176,7 +192,7 @@
         }
 
         .product-card.gpu .product-image {
-            background: linear-gradient(135deg, #6C5CE7, #8E44AD);
+            background: var(--button-gradient);
         }
 
         .product-card.cpu .product-image {
@@ -206,17 +222,19 @@
             display: inline-block;
             margin-top: 1rem;
             padding: 0.5rem 1rem;
-            background-color: #e1251b;
+            background: var(--button-gradient);
             color: white;
             text-decoration: none;
             border-radius: 8px;
-            font-size: 1.0rem;
+            font-size: 1rem;
             text-align: center;
-            transition: background-color 0.3s ease;
+            transition: background 0.3s ease, transform 0.3s ease;
+            box-shadow: var(--button-shadow);
         }
 
         .jd-link:hover {
-            background-color: #c21a11;
+            background: var(--button-hover-gradient);
+            transform: translateY(-2px);
         }
 
         .contact-section {
@@ -225,7 +243,8 @@
             padding: 1.5rem;
             background: var(--card-bg);
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            box-shadow: var(--button-shadow);
+            backdrop-filter: blur(var(--blur-intensity));
         }
 
         .contact-form {
@@ -244,6 +263,8 @@
             border-radius: 8px;
             font-size: 1rem;
             box-sizing: border-box;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(var(--blur-intensity));
         }
 
         .form-input:focus {
@@ -253,7 +274,7 @@
         }
 
         .submit-btn {
-            background: var(--accent-color);
+            background: var(--button-gradient);
             color: white;
             padding: 0.75rem 1.5rem;
             border: none;
@@ -261,21 +282,25 @@
             font-size: 1rem;
             cursor: pointer;
             justify-self: start;
+            transition: background 0.3s ease, transform 0.3s ease;
+            box-shadow: var(--button-shadow);
         }
 
         .submit-btn:hover {
-            background: #5a4dcc;
+            background: var(--button-hover-gradient);
+            transform: translateY(-2px);
         }
 
         .notification {
             position: fixed;
             top: 20px;
             right: -300px;
-            background: white;
+            background: var(--card-bg);
             padding: 1rem;
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--button-shadow);
             z-index: 1000;
+            backdrop-filter: blur(var(--blur-intensity));
         }
 
         .notification.show {
@@ -295,24 +320,32 @@
             padding: 2rem 1rem;
             text-align: center;
             margin-top: 3rem;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(var(--blur-intensity));
+            border-radius: 12px;
+            margin: 1rem;
+            box-shadow: var(--button-shadow);
+            position: relative;
         }
 
         .toggle-particles {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: var(--accent-color);
+            background: var(--button-gradient);
             color: white;
             padding: 0.5rem 1rem;
             border: none;
             border-radius: 8px;
             cursor: pointer;
             z-index: 1000;
+            backdrop-filter: blur(var(--blur-intensity));
+            transition: background 0.3s ease, transform 0.3s ease;
+            box-shadow: var(--button-shadow);
         }
 
         .toggle-particles:hover {
-            background: #5a4dcc;
+            background: var(--button-hover-gradient);
+            transform: translateY(-2px);
         }
 
         /* 新增页脚按钮样式 */
@@ -335,8 +368,7 @@
         }
 
         .footer-btn:hover {
-            color: var(--footer-text);
-            text-decoration: underline;
+            color: var(--accent-color);
         }
 
         /* 新增品牌图片按钮样式 */
@@ -349,8 +381,8 @@
         }
 
         .brand-btn {
-            width: 50px; /* 缩小按钮大小 */
-            height: 50px; /* 缩小按钮大小 */
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             overflow: hidden;
             position: relative;
@@ -358,12 +390,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            background: transparent; /* 背景改为透明 */
         }
 
         .brand-btn img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* 确保图片完整显示 */
+            object-fit: contain;
         }
 
         .brand-btn:hover {
@@ -373,7 +406,7 @@
         .brand-btn::after {
             content: attr(data-brand);
             position: absolute;
-            bottom: -25px; /* 调整文字位置 */
+            bottom: -25px;
             left: 50%;
             transform: translateX(-50%);
             background: rgba(0, 0, 0, 0.8);
@@ -383,7 +416,7 @@
             font-size: 0.8rem;
             opacity: 0;
             transition: opacity 0.3s ease;
-            white-space: nowrap; /* 防止文字换行 */
+            white-space: nowrap;
         }
 
         .brand-btn:hover::after {
@@ -404,6 +437,7 @@
             z-index: 1000;
             opacity: 0;
             visibility: hidden;
+            backdrop-filter: blur(var(--blur-intensity));
         }
 
         .modal-overlay.active {
@@ -412,29 +446,33 @@
         }
 
         .modal-content {
-            background: white;
+            background: var(--card-bg);
             padding: 2rem;
             border-radius: 12px;
             max-width: 600px;
             width: 90%;
             max-height: 80vh;
             overflow-y: auto;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--button-shadow);
             position: relative;
+            backdrop-filter: blur(var(--blur-intensity));
         }
 
         .modal-close-btn {
-            background: var(--accent-color);
+            background: var(--button-gradient);
             color: white;
             padding: 0.5rem 1rem;
             border: none;
             border-radius: 8px;
             cursor: pointer;
             margin-top: 1rem;
+            transition: background 0.3s ease, transform 0.3s ease;
+            box-shadow: var(--button-shadow);
         }
 
         .modal-close-btn:hover {
-            background: #5a4dcc;
+            background: var(--button-hover-gradient);
+            transform: translateY(-2px);
         }
 
         @media (max-width: 768px) {
@@ -482,10 +520,10 @@
         /* 新增暗色模式切换按钮 */
         .dark-mode-toggle {
             position: fixed;
-            top: 20px;
+            bottom: 80px; /* 调整到右下角 */
             right: 20px;
-            background: rgba(255, 255, 255, 0.2); /* 虚化透明背景 */
-            backdrop-filter: blur(10px); /* 背景模糊效果 */
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(var(--blur-intensity));
             color: var(--text-color);
             padding: 0.5rem 1rem;
             border: none;
@@ -494,10 +532,30 @@
             z-index: 1000;
             font-size: 1.2rem;
             transition: background 0.3s ease, color 0.3s ease;
+            box-shadow: var(--button-shadow);
         }
 
         .dark-mode-toggle:hover {
-            background: rgba(255, 255, 255, 0.3); /* 悬停时背景更亮 */
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* 页脚按钮悬浮效果 */
+        footer {
+            position: relative;
+            z-index: 1;
+        }
+
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        @media (max-width: 768px) {
+            .dark-mode-toggle {
+                bottom: 60px; /* 移动端调整位置 */
+            }
         }
     </style>
 </head>
@@ -637,7 +695,7 @@
         <p>© 2025 TCF | 硬件管理定制化服务框架</p>
         <p style="font-size: 0.8rem; margin-top: 1rem;">网站现已对移动端开放 | 移动端页面仍然会有不协调 | 请谅解</p>
         <p style="font-size: 0.8rem; margin-top: 1rem;">TCF目前还是小团体，网站正在逐步改进，请谅解...</p>
-        <p style="font-size: 0.8rem; margin-top: 1rem;">版本号：1.03.2/1.03.2</p>
+        <p style="font-size: 0.8rem; margin-top: 1rem;">版本号：2.00.0/2.00.0</p>
     </footer>
 
     <!-- 团队介绍弹窗 -->
@@ -755,7 +813,7 @@
                 <br><br>
                 18.用户在接受装机指导时，需要阅读该协议，若因为用户没有仔细阅读该协议的内容造成的主观侵权TCF不负责。
                 <br><br>
-                19.装机指导为微信视频通话，在线指导。若不同意视频电话，则无法享受该服务
+                19.装机指导为微信视频通话，在线指导。若不同意视频电话，则无法享受该服务。
                 <br><br>
                 20.第三方网站的客服问题与TCF无关，请注意辨别。若因为第三方客服问题联系TCF客服的，TCF不会给予处理。
                 <br><br>
