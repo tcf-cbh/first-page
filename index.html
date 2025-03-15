@@ -85,6 +85,11 @@
             flex-wrap: wrap;
             border-radius: 12px;
             margin: 1rem;
+            transition: border-radius 0.3s ease;
+        }
+
+        nav.sticky {
+            border-radius: 0 0 12px 12px;
         }
 
         nav a {
@@ -603,7 +608,7 @@
         <p>TCF | 专注于硬件定制化服务框架</p>
     </header>
 
-    <nav>
+    <nav id="mainNav">
         <a href="#" onclick="openTeamModal()">关于</a>
         <a href="#" onclick="openProductModal()">旗舰产品</a>
         <a href="https://work.weixin.qq.com/kfid/kfc35910d65105a8c00">装机指导</a>
@@ -733,7 +738,7 @@
         <p>© 2025 TCF | 硬件管理定制化服务框架</p>
         <p style="font-size: 0.8rem; margin-top: 1rem;">网站现已对移动端开放 | 移动端页面仍然会有不协调 | 请谅解</p>
         <p style="font-size: 0.8rem; margin-top: 1rem;">TCF目前还是小团体，网站正在逐步改进，请谅解...</p>
-        <p style="font-size: 0.8rem; margin-top: 1rem;">版本号：2.01.1/2.01.1
+        <p style="font-size: 0.8rem; margin-top: 1rem;">版本号：2.02.1/2.02.1
     </footer>
 
     <!-- 团队介绍弹窗 -->
@@ -879,6 +884,7 @@
                 - 调整了主题色切换按钮的位置<br>
                 - 在产品卡上部分分页中插入了【查看更新日志】按钮，并且写入建站以来的所有<br>
                   更新内容<br>
+                - 修复已知问题<br>
                 <strong>2025.3.08</strong><br>
                 - 页面插入主题色彩切换按钮<br>
                 <strong>2025.3.07</strong><br>
@@ -1117,6 +1123,16 @@
         document.getElementById('updateLogModal').addEventListener('click', function(e) {
             if (e.target === this) {
                 closeUpdateLogModal();
+            }
+        });
+
+        // 导航栏滚动时改变圆角
+        const nav = document.getElementById('mainNav');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 0) {
+                nav.classList.add('sticky');
+            } else {
+                nav.classList.remove('sticky');
             }
         });
     </script>
