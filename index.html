@@ -22,6 +22,7 @@
             --button-gradient: linear-gradient(135deg, #6C5CE7, #8E44AD);
             --button-hover-gradient: linear-gradient(135deg, #8E44AD, #6C5CE7);
             --button-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --jd-color: #e1251b; /* 京东主题色 */
         }
 
         body {
@@ -46,6 +47,7 @@
             --nav-text: #f5f5f5;
             --button-gradient: linear-gradient(135deg, #8E44AD, #6C5CE7);
             --button-hover-gradient: linear-gradient(135deg, #6C5CE7, #8E44AD);
+            --jd-color: #ff4d4d; /* 暗色模式下的京东主题色 */
         }
 
         header {
@@ -257,11 +259,12 @@
             background: linear-gradient(135deg, #ff0051, #e800ff);
         }
 
+        /* 京东购买按钮样式 */
         .jd-link {
             display: inline-block;
             margin-top: 1rem;
             padding: 0.5rem 1rem;
-            background: var(--button-gradient);
+            background: var(--jd-color);
             color: white;
             text-decoration: none;
             border-radius: 8px;
@@ -272,7 +275,7 @@
         }
 
         .jd-link:hover {
-            background: var(--button-hover-gradient);
+            background: #c82333; /* 京东主题色加深 */
             transform: translateY(-2px);
         }
 
@@ -738,7 +741,7 @@
         <p>© 2025 TCF | 硬件管理定制化服务框架</p>
         <p style="font-size: 0.8rem; margin-top: 1rem;">网站现已对移动端开放 | 移动端页面仍然会有不协调 | 请谅解</p>
         <p style="font-size: 0.8rem; margin-top: 1rem;">TCF目前还是小团体，网站正在逐步改进，请谅解...</p>
-        <p style="font-size: 0.8rem; margin-top: 1rem;">版本号：2.02.1/2.02.1
+        <p style="font-size: 0.8rem; margin-top: 1rem;">版本号：2.02.2/2.02.2
     </footer>
 
     <!-- 团队介绍弹窗 -->
@@ -875,6 +878,8 @@
         <div class="modal-content">
             <h2>更新日志</h2>
             <p>
+                <strong>2025.3.16</strong><br>
+                - 将【京东按钮】颜色改回红色，并美化该按钮的其他功能<br>
                 <strong>2025.3.15</strong><br>
                 <strong>首次大更新</strong><br>
                 - 切换网站整体风格：毛玻璃，win11圆角风<br>
