@@ -279,60 +279,6 @@
             transform: translateY(-2px);
         }
 
-        .contact-section {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 1.5rem;
-            background: var(--card-bg);
-            border-radius: 20px;
-            box-shadow: var(--button-shadow);
-            backdrop-filter: blur(var(--blur-intensity));
-        }
-
-        .contact-form {
-            display: grid;
-            gap: 1rem;
-        }
-
-        .form-group {
-            position: relative;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 0.75rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 1rem;
-            box-sizing: border-box;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(var(--blur-intensity));
-        }
-
-        .form-input:focus {
-            border-color: var(--accent-color);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
-        }
-
-        .submit-btn {
-            background: var(--button-gradient);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            cursor: pointer;
-            justify-self: start;
-            transition: background 0.3s ease, transform 0.3s ease;
-            box-shadow: var(--button-shadow);
-        }
-
-        .submit-btn:hover {
-            background: var(--button-hover-gradient);
-            transform: translateY(-2px);
-        }
-
         .notification {
             position: fixed;
             top: 20px;
@@ -536,18 +482,6 @@
                 font-size: 1.2rem;
             }
 
-            .contact-section {
-                padding: 1rem;
-            }
-
-            .form-input {
-                padding: 0.5rem;
-            }
-
-            .submit-btn {
-                padding: 0.5rem 1rem;
-            }
-
             .footer-buttons {
                 flex-direction: column;
                 align-items: center;
@@ -620,7 +554,6 @@
         <a href="https://topic.expreview.com/CPU/">处理器性能天梯</a>
         <a href="https://www.bilibili.com/video/BV1BG4y137mG/?spm_id_from=333.337.search-card.all.click&vd_source=d04f379665f2f3dbcfb9e422587d0445">硬件茶谈装机</a>
         <a href="https://www.wjx.cn/vm/wjcJuA7.aspx">提供建议</a>
-        <a href="#contact">尊享服务</a>
         <a href="https://kaoshi.wjx.top/vm/mlrbxmS.aspx">公测二口</a>
         <a href="https://work.weixin.qq.com/kfid/kfcdb61e3785a0883a7">投诉</a>
     </nav>
@@ -693,24 +626,6 @@
         </div>
     </main>
 
-    <section class="contact-section" id="contact">
-        <h2>专属顾问服务(可不填)</h2>
-        <p class="form-note">填写信息后，我们会安排专业工程师与您联系</p>
-        <form class="contact-form" id="contactForm">
-            <div class="form-group">
-                <input type="text" class="form-input" placeholder="尊称" required>
-            </div>
-            <div class="form-group">
-                <input type="tel" class="form-input" placeholder="联系号码" pattern="[0-9]{11}" required>
-            </div>
-            <div class="form-group">
-                <textarea class="form-input" rows="5" placeholder="您的特别需求" required style="resize: vertical;"></textarea>
-            </div>
-            <a href="https://work.weixin.qq.com/kfid/kfc35910d65105a8c00" class="submit-btn">开启专属服务</a>
-        </form>
-        <p class="form-notice">提交即表示同意我们的用户协议，你会直接跳转到微信与客服联系</p>
-    </section>
-
     <footer>
         <div class="footer-buttons">
             <button class="footer-btn" onclick="scrollToTop()">返回顶部</button>
@@ -741,7 +656,7 @@
         <p>© 2025 TCF | 硬件管理定制化服务框架</p>
         <p style="font-size: 0.8rem; margin-top: 1rem;">网站现已对移动端开放 | 移动端页面仍然会有不协调 | 请谅解</p>
         <p style="font-size: 0.8rem; margin-top: 1rem;">TCF目前还是小团体，网站正在逐步改进，请谅解...</p>
-        <p style="font-size: 0.8rem; margin-top: 1rem;">版本号：2.02.2/2.02.2
+        <p style="font-size: 0.8rem; margin-top: 1rem;">版本号：2.02.3/2.02.3
     </footer>
 
     <!-- 团队介绍弹窗 -->
@@ -878,6 +793,8 @@
         <div class="modal-content">
             <h2>更新日志</h2>
             <p>
+		<strong>2025.3.20</strong><br>
+                - - 删除了【专属顾问服务】模块<br>
                 <strong>2025.3.16</strong><br>
                 - 将【京东按钮】颜色改回红色，并美化该按钮的其他功能<br>
                 <strong>2025.3.15</strong><br>
@@ -885,48 +802,48 @@
                 - 切换网站整体风格：毛玻璃，win11圆角风<br>
                 - 将网站页眉部分无论是黑白主题色都为黑色风格的bug修复<br>
                 - 在产品卡上部分分页中插入了当时日期、时间的快捷查看栏<br>
-                - 将除了导航栏、页脚文字按钮、页脚图片按钮的所有按钮样式做出调整<br>
-                - 调整了主题色切换按钮的位置<br>
+                - 调整除导航栏、页脚文字按钮、页脚图片按钮的所有按钮样式<br>
+                - 调整主题色切换按钮的位置<br>
                 - 在产品卡上部分分页中插入了【查看更新日志】按钮，并且写入建站以来的所有<br>
                   更新内容<br>
                 - 修复已知问题<br>
                 <strong>2025.3.08</strong><br>
                 - 页面插入主题色彩切换按钮<br>
-                <strong>2025.3.07</strong><br>
+                <strong>2025.3.07</br>
                 - 页脚插入图片按钮<br>
-                <strong>2025.3.01</strong><br>
+                <strong>2025.3.01</br>
                 - 页脚插入【返回顶部】【加入我们】按钮<br>
-                <strong>2025.2.29</strong><br>
+                <strong>2025.2.29</br>
                 - 因为bug，删除了所有的页面渐变效果<br>
                 - 每个产品卡的介绍信息更改得更为严谨<br>
                 - 每个产品卡插入京东购买按钮<br>
-                <strong>2025.2.28</strong><br>
+                <strong>2025.2.28</br>
                 - 产品卡增加更多产品<br>
                 - 页脚按钮样式文字按钮<br>
-                <strong>2025.2.27</strong><br>
+                <strong>2025.2.27</br>
                 - 导航栏增加投诉按钮<br>
-                <strong>2025.2.26</strong><br>
+                <strong>2025.2.26</br>
                 - 主页插入产品卡模块<br>
                 - 页脚插入按钮<br>
-                <strong>2025.2.25</strong><br>
+                <strong>2025.2.25</br>
                 - 开放移动端<br>
                 - 调整移动端页面<br>
                 - 添加页面渐变效果<br>
-                <strong>2025.2.22</strong><br>
+                <strong>2025.2.22</br>
                 - 导航栏增加【关于】【装机指导】【显卡性能天梯】【处理器性能天梯】按钮
-                <strong>2025.2.19</strong><br>
+                <strong>2025.2.19</br>
                 - 插入粒子动画开关<br>
                 - 修复已知问题<br>
-                <strong>2025.2.17</strong><br>
+                <strong>2025.2.17</br>
                 - 导航栏增加【硬件茶谈装机】按钮<br>
-                <strong>2025.2.16</strong><br>
+                <strong>2025.2.16</br>
                 - 新增导航栏按钮【投诉】【公测一口】【公测二口】按钮<br>
                 - 页脚插入移动端无法访问的说明<br>
-                <strong>2025.2.15</strong><br>
+                <strong>2025.2.15</br>
                 - 网页标题与文字修改<br>
-                <strong>2025.2.14</strong><br>
+                <strong>2025.2.14</br>
                 - 网页链接生成<br>
-                <strong>2025.2.12</strong><br>
+                <strong>2025.2.12</br>
                 - 推出团队网站框架<br>
             </p>
             <button class="modal-close-btn" onclick="closeUpdateLogModal()">关闭</button>
@@ -986,13 +903,6 @@
             const button = document.querySelector('.toggle-particles');
             button.textContent = particlesActive ? '停止粒子运动' : '开启粒子运动';
         }
-
-        // 表单交互
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            showNotification('提交成功！我们将尽快与您联系。');
-            this.reset();
-        });
 
         // 动态通知系统
         function showNotification(message) {
