@@ -533,6 +533,69 @@
                 bottom: 60px; /* 移动端调整位置 */
             }
         }
+        .faq-section {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: var(--button-shadow);
+            backdrop-filter: blur(var(--blur-intensity));
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .faq-question h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+
+        .faq-question .arrow {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            padding: 0 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 0 0 8px 8px;
+        }
+
+        .faq-answer p {
+            margin: 0;
+            padding: 1rem 0;
+            color: var(--text-color);
+        }
+
+        .faq-item.active .faq-question .arrow {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px; /* 根据需要调整 */
+            padding: 1rem;
+        }
     </style>
 </head>
 <body>
@@ -624,6 +687,45 @@
             <p>高刷大屏，剪辑游戏都不在话下。</p>
             <a href="https://search.jd.com/Search?keyword=显示器" target="_blank" class="jd-link">京东购买</a>
         </div>
+    <section class="faq-section">
+        <h2>常见问题解答 (FAQ)</h2>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3>TCF是什么？</h3>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="faq-answer">
+                <p>TCF（Total Customization Framework）是一个专注于电脑硬件定制化的服务框架，致力于为用户提供从硬件配置到装机指导的一站式服务。</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3>如何联系TCF客服？</h3>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="faq-answer">
+                <p>您可以通过页面底部的“加入我们”按钮或导航栏中的“投诉”按钮联系TCF客服。</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3>TCF提供哪些服务？</h3>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="faq-answer">
+                <p>TCF提供硬件配置推荐、装机指导、专属顾问服务等。</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <h3>TCF的旗舰产品有哪些？</h3>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="faq-answer">
+                <p>TCF的旗舰产品包括Intel Core Ultra 5 230F、NVIDIA RTX 5090、AMD Ryzen 7 9800X3D等。</p>
+            </div>
+        </div>
+    </section>
     </main>
 
     <footer>
@@ -1050,6 +1152,10 @@
                 nav.classList.remove('sticky');
             }
         });
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            faqItem.classList.toggle('active');
+        }
     </script>
 </body>
 </html>
