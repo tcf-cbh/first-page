@@ -153,7 +153,6 @@
             margin: 0.5rem 0 0;
         }
 
-        /* 新增时间日期模块样式 */
         .datetime {
             margin-top: 1.5rem;
             font-size: 1.2rem;
@@ -165,7 +164,6 @@
             box-shadow: var(--button-shadow);
         }
 
-        /* 新增查看更新日志按钮样式 */
         .update-log-btn {
             position: absolute;
             top: 20px;
@@ -259,7 +257,6 @@
             background: linear-gradient(135deg, #ff0051, #e800ff);
         }
 
-        /* 京东购买按钮样式 */
         .jd-link {
             display: inline-block;
             margin-top: 1rem;
@@ -336,7 +333,6 @@
             transform: translateY(-2px);
         }
 
-        /* 新增页脚按钮样式 */
         .footer-buttons {
             display: flex;
             justify-content: center;
@@ -359,7 +355,6 @@
             color: var(--accent-color);
         }
 
-        /* 新增品牌图片按钮样式 */
         .brand-buttons {
             display: flex;
             justify-content: center;
@@ -411,7 +406,6 @@
             opacity: 1;
         }
 
-        /* 弹窗样式 */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -493,7 +487,6 @@
             }
         }
 
-        /* 新增暗色模式切换按钮 */
         .dark-mode-toggle {
             position: fixed;
             bottom: 80px; /* 调整到右下角 */
@@ -515,7 +508,6 @@
             background: rgba(255, 255, 255, 0.3);
         }
 
-        /* 页脚按钮悬浮效果 */
         footer {
             position: relative;
             z-index: 1;
@@ -533,28 +525,45 @@
                 bottom: 60px; /* 移动端调整位置 */
             }
         }
+
         .faq-section {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 2rem auto;
-            padding: 1rem;
+            padding: 2rem;
             background: var(--card-bg);
             border-radius: 12px;
             box-shadow: var(--button-shadow);
             backdrop-filter: blur(var(--blur-intensity));
         }
 
+        .faq-section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            color: var(--text-color);
+        }
+
         .faq-item {
             margin-bottom: 1rem;
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(var(--blur-intensity));
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
         .faq-question {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
+            padding: 1.5rem;
             cursor: pointer;
+            background: rgba(255, 255, 255, 0.1);
             transition: background 0.3s ease;
         }
 
@@ -564,7 +573,7 @@
 
         .faq-question h3 {
             margin: 0;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: var(--text-color);
         }
 
@@ -577,14 +586,13 @@
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease, padding 0.3s ease;
-            padding: 0 1rem;
+            padding: 0 1.5rem;
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 0 0 8px 8px;
         }
 
         .faq-answer p {
             margin: 0;
-            padding: 1rem 0;
+            padding: 1.5rem 0;
             color: var(--text-color);
         }
 
@@ -594,64 +602,65 @@
 
         .faq-item.active .faq-answer {
             max-height: 500px; /* 根据需要调整 */
-            padding: 1rem;
+            padding: 1.5rem;
         }
-	    .temperature-info {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 1rem;
-    background: var(--card-bg);
-    border-radius: 12px;
-    box-shadow: var(--button-shadow);
-    backdrop-filter: blur(var(--blur-intensity));
-}
 
-.temperature-info h2 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    font-size: 2rem;
-    color: var(--text-color);
-}
+        .temperature-info {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: var(--button-shadow);
+            backdrop-filter: blur(var(--blur-intensity));
+        }
 
-.temperature-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-}
+        .temperature-info h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            color: var(--text-color);
+        }
 
-.temperature-card {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 1.5rem;
-    border-radius: 12px;
-    backdrop-filter: blur(var(--blur-intensity));
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+        .temperature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
 
-.temperature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
+        .temperature-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            backdrop-filter: blur(var(--blur-intensity));
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-.temperature-card h3 {
-    margin-top: 0;
-    font-size: 1.5rem;
-    color: var(--text-color);
-}
+        .temperature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
 
-.temperature-card p {
-    margin: 0.5rem 0;
-    color: var(--text-color);
-}
+        .temperature-card h3 {
+            margin-top: 0;
+            font-size: 1.5rem;
+            color: var(--text-color);
+        }
 
-.temperature-card ul {
-    margin: 0.5rem 0;
-    padding-left: 1.5rem;
-    color: var(--text-color);
-}
+        .temperature-card p {
+            margin: 0.5rem 0;
+            color: var(--text-color);
+        }
 
-.temperature-card ul li {
-    margin-bottom: 0.5rem;
-}
+        .temperature-card ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .temperature-card ul li {
+            margin-bottom: 0.5rem;
+        }
     </style>
 </head>
 <body>
@@ -680,9 +689,7 @@
     <section class="hero">
         <h2>打造属于您的个性电脑</h2>
         <h3>TCF为你提供细致服务</h3>
-        <!-- 新增时间日期模块 -->
         <div class="datetime" id="datetime"></div>
-        <!-- 新增查看更新日志按钮 -->
         <button class="update-log-btn" onclick="openUpdateLogModal()">查看更新日志</button>
     </section>
 
@@ -743,6 +750,8 @@
             <p>高刷大屏，剪辑游戏都不在话下。</p>
             <a href="https://search.jd.com/Search?keyword=显示器" target="_blank" class="jd-link">京东购买</a>
         </div>
+    </main>
+
     <section class="faq-section">
         <h2>常见问题解答 (FAQ)</h2>
         <div class="faq-item">
@@ -782,67 +791,67 @@
             </div>
         </div>
     </section>
-	<section class="temperature-info">
-    <h2>硬件安全温度与发热因素</h2>
-    <div class="temperature-grid">
-        <!-- CPU -->
-        <div class="temperature-card">
-            <h3>CPU</h3>
-            <p><strong>安全温度范围：</strong>30°C - 85°C</p>
-            <p><strong>发热因素：</strong></p>
-            <ul>
-                <li>高负载任务（如游戏、渲染）</li>
-                <li>散热器性能不足</li>
-                <li>硅脂老化或涂抹不均匀</li>
-            </ul>
+
+    <section class="temperature-info">
+        <h2>硬件安全温度与发热因素</h2>
+        <div class="temperature-grid">
+            <!-- CPU -->
+            <div class="temperature-card">
+                <h3>CPU</h3>
+                <p><strong>安全温度范围：</strong>30°C - 85°C</p>
+                <p><strong>发热因素：</strong></p>
+                <ul>
+                    <li>高负载任务（如游戏、渲染）</li>
+                    <li>散热器性能不足</li>
+                    <li>硅脂老化或涂抹不均匀</li>
+                </ul>
+            </div>
+            <!-- GPU -->
+            <div class="temperature-card">
+                <h3>GPU</h3>
+                <p><strong>安全温度范围：</strong>40°C - 90°C</p>
+                <p><strong>发热因素：</strong></p>
+                <ul>
+                    <li>图形密集型任务（如3D渲染、游戏）</li>
+                    <li>散热风扇故障</li>
+                    <li>机箱通风不良</li>
+                </ul>
+            </div>
+            <!-- 主板 -->
+            <div class="temperature-card">
+                <h3>主板</h3>
+                <p><strong>安全温度范围：</strong>30°C - 70°C</p>
+                <p><strong>发热因素：</strong></p>
+                <ul>
+                    <li>电源模块负载过高</li>
+                    <li>散热片接触不良</li>
+                    <li>机箱内部温度过高</li>
+                </ul>
+            </div>
+            <!-- 硬盘 -->
+            <div class="temperature-card">
+                <h3>硬盘</h3>
+                <p><strong>安全温度范围：</strong>25°C - 50°C</p>
+                <p><strong>发热因素：</strong></p>
+                <ul>
+                    <li>长时间读写操作</li>
+                    <li>散热不良</li>
+                    <li>硬盘老化</li>
+                </ul>
+            </div>
+            <!-- 电源 -->
+            <div class="temperature-card">
+                <h3>电源</h3>
+                <p><strong>安全温度范围：</strong>30°C - 60°C</p>
+                <p><strong>发热因素：</strong></p>
+                <ul>
+                    <li>高功率输出</li>
+                    <li>散热风扇故障</li>
+                    <li>灰尘堆积</li>
+                </ul>
+            </div>
         </div>
-        <!-- GPU -->
-        <div class="temperature-card">
-            <h3>GPU</h3>
-            <p><strong>安全温度范围：</strong>40°C - 90°C</p>
-            <p><strong>发热因素：</strong></p>
-            <ul>
-                <li>图形密集型任务（如3D渲染、游戏）</li>
-                <li>散热风扇故障</li>
-                <li>机箱通风不良</li>
-            </ul>
-        </div>
-        <!-- 主板 -->
-        <div class="temperature-card">
-            <h3>主板</h3>
-            <p><strong>安全温度范围：</strong>30°C - 70°C</p>
-            <p><strong>发热因素：</strong></p>
-            <ul>
-                <li>电源模块负载过高</li>
-                <li>散热片接触不良</li>
-                <li>机箱内部温度过高</li>
-            </ul>
-        </div>
-        <!-- 硬盘 -->
-        <div class="temperature-card">
-            <h3>硬盘</h3>
-            <p><strong>安全温度范围：</strong>25°C - 50°C</p>
-            <p><strong>发热因素：</strong></p>
-            <ul>
-                <li>长时间读写操作</li>
-                <li>散热不良</li>
-                <li>硬盘老化</li>
-            </ul>
-        </div>
-        <!-- 电源 -->
-        <div class="temperature-card">
-            <h3>电源</h3>
-            <p><strong>安全温度范围：</strong>30°C - 60°C</p>
-            <p><strong>发热因素：</strong></p>
-            <ul>
-                <li>高功率输出</li>
-                <li>散热风扇故障</li>
-                <li>灰尘堆积</li>
-            </ul>
-        </div>
-    </div>
-</section>
-    </main>
+    </section>
 
     <footer>
         <div class="footer-buttons">
@@ -853,7 +862,6 @@
             <button class="footer-btn" onclick="sharePage()">分享页面</button>
             <button class="footer-btn" onclick="openUserAgreementModal()">用户协议</button>
         </div>
-        <!-- 新增品牌图片按钮 -->
         <div class="brand-buttons">
             <a href="https://www.intel.cn" class="brand-btn" data-brand="英特尔">
                 <img src="https://img.expreview.com/brands/logo/intel.png" alt="英特尔">
@@ -874,7 +882,7 @@
         <p>© 2025 TCF | 硬件管理定制化服务框架</p>
         <p style="font-size: 0.8rem; margin-top: 1rem;">网站现已对移动端开放 | 移动端页面仍然会有不协调 | 请谅解</p>
         <p style="font-size: 0.8rem; margin-top: 1rem;">TCF目前还是小团体，网站正在逐步改进，请谅解...</p>
-        <p style="font-size: 0.8rem; margin-top: 1rem;">版本号：2.03.3/2.03.3
+        <p style="font-size: 0.8rem; margin-top: 1rem;">版本号：2.04.3/2.04.3</p>
     </footer>
 
     <!-- 团队介绍弹窗 -->
@@ -1011,9 +1019,12 @@
         <div class="modal-content">
             <h2>更新日志</h2>
             <p>
-		<strong>2025.3.20</strong><br>
+		<strong>2025.3.21</strong><br>
+		- 添加了【硬件安全温度与发热因素】模块<br>
+		- 调节页面协调性<br>
+                <strong>2025.3.20</strong><br>
                 - 删除了【专属顾问服务】模块<br>
-		- 添加了FAQ<br>
+                - 添加了FAQ<br>
                 <strong>2025.3.16</strong><br>
                 - 将【京东按钮】颜色改回红色，并美化该按钮的其他功能<br>
                 <strong>2025.3.15</strong><br>
