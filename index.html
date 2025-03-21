@@ -596,6 +596,62 @@
             max-height: 500px; /* 根据需要调整 */
             padding: 1rem;
         }
+	    .temperature-info {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: var(--button-shadow);
+    backdrop-filter: blur(var(--blur-intensity));
+}
+
+.temperature-info h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    color: var(--text-color);
+}
+
+.temperature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.temperature-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 12px;
+    backdrop-filter: blur(var(--blur-intensity));
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.temperature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.temperature-card h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: var(--text-color);
+}
+
+.temperature-card p {
+    margin: 0.5rem 0;
+    color: var(--text-color);
+}
+
+.temperature-card ul {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+    color: var(--text-color);
+}
+
+.temperature-card ul li {
+    margin-bottom: 0.5rem;
+}
     </style>
 </head>
 <body>
@@ -726,6 +782,66 @@
             </div>
         </div>
     </section>
+	<section class="temperature-info">
+    <h2>硬件安全温度与发热因素</h2>
+    <div class="temperature-grid">
+        <!-- CPU -->
+        <div class="temperature-card">
+            <h3>CPU</h3>
+            <p><strong>安全温度范围：</strong>30°C - 85°C</p>
+            <p><strong>发热因素：</strong></p>
+            <ul>
+                <li>高负载任务（如游戏、渲染）</li>
+                <li>散热器性能不足</li>
+                <li>硅脂老化或涂抹不均匀</li>
+            </ul>
+        </div>
+        <!-- GPU -->
+        <div class="temperature-card">
+            <h3>GPU</h3>
+            <p><strong>安全温度范围：</strong>40°C - 90°C</p>
+            <p><strong>发热因素：</strong></p>
+            <ul>
+                <li>图形密集型任务（如3D渲染、游戏）</li>
+                <li>散热风扇故障</li>
+                <li>机箱通风不良</li>
+            </ul>
+        </div>
+        <!-- 主板 -->
+        <div class="temperature-card">
+            <h3>主板</h3>
+            <p><strong>安全温度范围：</strong>30°C - 70°C</p>
+            <p><strong>发热因素：</strong></p>
+            <ul>
+                <li>电源模块负载过高</li>
+                <li>散热片接触不良</li>
+                <li>机箱内部温度过高</li>
+            </ul>
+        </div>
+        <!-- 硬盘 -->
+        <div class="temperature-card">
+            <h3>硬盘</h3>
+            <p><strong>安全温度范围：</strong>25°C - 50°C</p>
+            <p><strong>发热因素：</strong></p>
+            <ul>
+                <li>长时间读写操作</li>
+                <li>散热不良</li>
+                <li>硬盘老化</li>
+            </ul>
+        </div>
+        <!-- 电源 -->
+        <div class="temperature-card">
+            <h3>电源</h3>
+            <p><strong>安全温度范围：</strong>30°C - 60°C</p>
+            <p><strong>发热因素：</strong></p>
+            <ul>
+                <li>高功率输出</li>
+                <li>散热风扇故障</li>
+                <li>灰尘堆积</li>
+            </ul>
+        </div>
+    </div>
+</section>
     </main>
 
     <footer>
