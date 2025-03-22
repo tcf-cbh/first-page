@@ -691,6 +691,88 @@
             margin-bottom: 0.5rem;
         }
 
+        /* 硬件知识模块样式 */
+        .hardware-knowledge {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: var(--button-shadow);
+            backdrop-filter: blur(var(--blur-intensity));
+            animation: fadeIn 1s ease-out 1.5s;
+            animation-fill-mode: both;
+        }
+
+        .hardware-knowledge h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            color: var(--text-color);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hardware-knowledge h2 .arrow {
+            margin-left: 0.5rem;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .hardware-knowledge h2:hover {
+            color: var(--accent-color);
+        }
+
+        .hardware-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+        }
+
+        .hardware-grid.expanded {
+            max-height: 2000px; /* 根据需要调整 */
+            padding-top: 1.5rem;
+        }
+
+        .hardware-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            backdrop-filter: blur(var(--blur-intensity));
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hardware-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .hardware-card h3 {
+            margin-top: 0;
+            font-size: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .hardware-card p {
+            margin: 0.5rem 0;
+            color: var(--text-color);
+        }
+
+        .hardware-card ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .hardware-card ul li {
+            margin-bottom: 0.5rem;
+        }
+
         /* 渐入动画 */
         @keyframes fadeIn {
             from {
@@ -927,6 +1009,135 @@
         </div>
     </section>
 
+    <!-- 硬件知识模块 -->
+    <section class="hardware-knowledge">
+        <h2 onclick="toggleHardwareKnowledgeSection()">
+            硬件知识
+            <span class="arrow">▼</span>
+        </h2>
+        <div class="hardware-grid" id="hardwareGrid">
+            <!-- CPU -->
+            <div class="hardware-card">
+                <h3>CPU</h3>
+                <p><strong>作用：</strong>中央处理器，负责执行计算机指令。</p>
+                <p><strong>关键参数：</strong></p>
+                <ul>
+                    <li>核心数：决定多任务处理能力</li>
+                    <li>线程数：影响并行处理能力</li>
+                    <li>主频：决定单核性能</li>
+                    <li>缓存：提升数据读取速度</li>
+                </ul>
+            </div>
+            <!-- 显卡 -->
+            <div class="hardware-card">
+                <h3>显卡</h3>
+                <p><strong>作用：</strong>处理图形数据，输出图像到显示器。</p>
+                <p><strong>关键参数：</strong></p>
+                <ul>
+                    <li>显存容量：决定图形处理能力</li>
+                    <li>核心频率：影响显卡性能</li>
+                    <li>散热设计：影响显卡稳定性</li>
+                    <li>接口类型：如HDMI、DP等</li>
+                </ul>
+            </div>
+            <!-- 主板 -->
+            <div class="hardware-card">
+                <h3>主板</h3>
+                <p><strong>作用：</strong>连接和协调各硬件组件。</p>
+                <p><strong>关键参数：</strong></p>
+                <ul>
+                    <li>芯片组：决定支持的CPU和功能</li>
+                    <li>扩展插槽：如PCIe、M.2等</li>
+                    <li>供电设计：影响稳定性</li>
+                    <li>接口数量：如USB、SATA等</li>
+                </ul>
+            </div>
+            <!-- 内存 -->
+            <div class="hardware-card">
+                <h3>内存</h3>
+                <p><strong>作用：</strong>临时存储数据，提升系统响应速度。</p>
+                <p><strong>关键参数：</strong></p>
+                <ul>
+                    <li>容量：决定多任务处理能力</li>
+                    <li>频率：影响数据传输速度</li>
+                    <li>时序：影响内存性能</li>
+                    <li>类型：如DDR4、DDR5</li>
+                </ul>
+            </div>
+            <!-- 硬盘 -->
+            <div class="hardware-card">
+                <h3>硬盘</h3>
+                <p><strong>作用：</strong>存储操作系统、软件和用户数据。</p>
+                <p><strong>关键参数：</strong></p>
+                <ul>
+                    <li>类型：HDD（机械硬盘）或SSD（固态硬盘）</li>
+                    <li>容量：决定存储空间大小</li>
+                    <li>读写速度：影响系统性能</li>
+                    <li>接口类型：如SATA、NVMe</li>
+                </ul>
+            </div>
+            <!-- 主板芯片 -->
+            <div class="hardware-card">
+                <h3>主板芯片</h3>
+                <p><strong>作用：</strong>控制主板上的数据传输和功能。</p>
+                <p><strong>关键参数：</strong></p>
+                <ul>
+                    <li>芯片组型号：如Intel Z790、AMD X670</li>
+                    <li>支持的CPU类型</li>
+                    <li>扩展功能：如超频、RAID支持</li>
+                </ul>
+            </div>
+            <!-- 电源 -->
+            <div class="hardware-card">
+                <h3>电源</h3>
+                <p><strong>作用：</strong>为计算机提供稳定的电力。</p>
+                <p><strong>关键参数：</strong></p>
+                <ul>
+                    <li>额定功率：决定支持的硬件配置</li>
+                    <li>效率认证：如80 PLUS</li>
+                    <li>接口数量：如SATA、PCIe电源接口</li>
+                    <li>散热设计：影响电源稳定性</li>
+                </ul>
+            </div>
+            <!-- 风冷散热 -->
+            <div class="hardware-card">
+                <h3>风冷散热</h3>
+                <p><strong>作用：</strong>通过风扇和散热片降低CPU温度。</p>
+                <p><strong>关键参数：</strong></p>
+                <ul>
+                    <li>散热片材质：如铜、铝</li>
+                    <li>风扇转速：影响散热效果</li>
+                    <li>噪音水平：影响使用体验</li>
+                    <li>兼容性：支持的CPU插槽类型</li>
+                </ul>
+            </div>
+            <!-- 水冷散热 -->
+            <div class="hardware-card">
+                <h3>水冷散热</h3>
+                <p><strong>作用：</strong>通过液体循环降低CPU温度。</p>
+                <p><strong>关键参数：</strong></p>
+                <ul>
+                    <li>冷排尺寸：如120mm、240mm</li>
+                    <li>水泵噪音：影响使用体验</li>
+                    <li>兼容性：支持的CPU插槽类型</li>
+                    <li>安装难度：影响用户操作</li>
+                </ul>
+            </div>
+            <!-- 机箱风扇 -->
+            <div class="hardware-card">
+                <h3>机箱风扇</h3>
+                <p><strong>作用：</strong>改善机箱内部空气流通，降低温度。</p>
+                <p><strong>关键参数：</strong></p>
+                <ul>
+                    <li>尺寸：如120mm、140mm</li>
+                    <li>风量：影响散热效果</li>
+                    <li>噪音水平：影响使用体验</li>
+                    <li>RGB灯光：提升视觉效果</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <div class="footer-buttons">
             <button class="footer-btn" onclick="scrollToTop()">返回顶部</button>
@@ -956,7 +1167,7 @@
         <p>© 2025 TCF | 硬件管理定制化服务框架</p>
         <p style="font-size: 0.8rem; margin-top: 1rem;">网站现已对移动端开放 | 移动端页面仍然会有不协调 | 请谅解</p>
         <p style="font-size: 0.8rem; margin-top: 1rem;">TCF目前还是小团体，网站正在逐步改进，请谅解...</p>
-        <p style="font-size: 0.8rem; margin-top: 1rem;">版本号：2.04.6/2.04.6</p>
+        <p style="font-size: 0.8rem; margin-top: 1rem;">版本号：2.04.7/2.04.7</p>
     </footer>
 
     <!-- 团队介绍弹窗 -->
@@ -1095,6 +1306,7 @@
             <p>
 		<strong>2025.3.22</strong><br>
 		- 添加了【硬件安全温度与发热因素】模块折叠功能<br>
+		- 添加了可折叠的【硬件知识】模块<br>
                 <strong>2025.3.21</strong><br>
                 - 添加了【硬件安全温度与发热因素】模块<br>
                 - 调节页面协调性<br>
@@ -1370,6 +1582,14 @@
             const arrow = document.querySelector('.temperature-info h2 .arrow');
             temperatureGrid.classList.toggle('expanded');
             arrow.textContent = temperatureGrid.classList.contains('expanded') ? '▲' : '▼';
+        }
+
+        // 硬件知识模块展开/折叠功能
+        function toggleHardwareKnowledgeSection() {
+            const hardwareGrid = document.getElementById('hardwareGrid');
+            const arrow = document.querySelector('.hardware-knowledge h2 .arrow');
+            hardwareGrid.classList.toggle('expanded');
+            arrow.textContent = hardwareGrid.classList.contains('expanded') ? '▲' : '▼';
         }
     </script>
 </body>
