@@ -460,36 +460,6 @@
             transform: translateY(-2px);
         }
 
-        @media (max-width: 768px) {
-            .hero h2 {
-                font-size: 2rem;
-            }
-
-            .hero h3 {
-                font-size: 1.2rem;
-            }
-
-            .product-grid {
-                grid-template-columns: 1fr;
-                padding: 1rem;
-            }
-
-            .product-card .product-image {
-                height: 150px;
-                font-size: 1.2rem;
-            }
-
-            .footer-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .footer-btn {
-                width: 100%;
-                margin-bottom: 0.5rem;
-            }
-        }
-
         .dark-mode-toggle {
             position: fixed;
             bottom: 80px; /* 调整到右下角 */
@@ -509,24 +479,6 @@
 
         .dark-mode-toggle:hover {
             background: rgba(255, 255, 255, 0.3);
-        }
-
-        footer {
-            position: relative;
-            z-index: 1;
-        }
-
-        .dark-mode-toggle {
-            position: fixed;
-            bottom: 80px;
-            right: 20px;
-            z-index: 1000;
-        }
-
-        @media (max-width: 768px) {
-            .dark-mode-toggle {
-                bottom: 60px; /* 移动端调整位置 */
-            }
         }
 
         .faq-section {
@@ -784,9 +736,122 @@
                 transform: translateY(0);
             }
         }
+
+        /* 移动端导航样式 */
+        @media (max-width: 768px) {
+            nav {
+                position: fixed;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                width: 70px;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 20px;
+                border-radius: 0 12px 12px 0;
+                z-index: 1000;
+                overflow-y: auto;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            nav.active {
+                transform: translateX(0);
+            }
+
+            nav a {
+                width: 100%;
+                padding: 0.8rem 0;
+                text-align: center;
+                font-size: 0.8rem;
+                writing-mode: vertical-rl;
+                text-orientation: mixed;
+                margin: 5px 0;
+            }
+
+            nav a::after {
+                left: 0;
+                bottom: 50%;
+                width: 3px;
+                height: 0;
+                transform: translateY(50%);
+            }
+
+            nav a:hover::after {
+                width: 3px;
+                height: 50%;
+                left: 0;
+                bottom: 50%;
+                transform: translateY(50%);
+            }
+
+            .nav-toggle {
+                display: block;
+                position: fixed;
+                left: 10px;
+                top: 10px;
+                z-index: 1001;
+                background: var(--button-gradient);
+                color: white;
+                border: none;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+                cursor: pointer;
+                box-shadow: var(--button-shadow);
+            }
+
+            .brand-title {
+                font-family: "仿宋", "FangSong", serif;
+                font-size: 1.5rem;
+                writing-mode: vertical-rl;
+                text-orientation: mixed;
+                margin-bottom: 20px;
+                color: var(--nav-text);
+                text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero h3 {
+                font-size: 1.2rem;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+
+            .product-card .product-image {
+                height: 150px;
+                font-size: 1.2rem;
+            }
+
+            .footer-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-btn {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        /* 在大于768px的屏幕上隐藏导航切换按钮 */
+        @media (min-width: 769px) {
+            .nav-toggle {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
+    <button class="nav-toggle" onclick="toggleMobileNav()">☰</button>
     <canvas class="particles"></canvas>
     <button class="toggle-particles" onclick="toggleParticles()">停止粒子运动</button>
     <button class="dark-mode-toggle" onclick="toggleDarkMode()">☾</button>
@@ -891,7 +956,7 @@
                 <span class="arrow">▼</span>
             </div>
             <div class="faq-answer">
-                <p>您可以通过页面底部的“加入我们”按钮或导航栏中的“投诉”按钮联系TCF客服。</p>
+                <p>您可以通过页面底部的"加入我们"按钮或导航栏中的"投诉"按钮联系TCF客服。</p>
             </div>
         </div>
         <div class="faq-item">
@@ -1174,6 +1239,7 @@
                     <li>RGB灯光：提升视觉效果</li>
                 </ul>
             </div>
+        </div>
     </section>
 
     <footer>
@@ -1205,7 +1271,7 @@
         <p>© 2025 TCF | 硬件管理定制化服务框架</p>
         <p style="font-size: 0.8rem; margin-top: 1rem;">网站现已对移动端开放 | 移动端页面仍然会有不协调 | 请谅解</p>
         <p style="font-size: 0.8rem; margin-top: 1rem;">TCF目前还是小团体，网站正在逐步改进，请谅解...</p>
-        <p style="font-size: 0.8rem; margin-top: 1rem;">版本号：2.04.8/2.04.8</p>
+        <p style="font-size: 0.8rem; margin-top: 1rem;">版本号：2.05.8/2.05.8</p>
     </footer>
 
     <!-- 团队介绍弹窗 -->
@@ -1329,7 +1395,7 @@
                 <br><br>
                 21.京东客服链接非TCF恶意引入，且京东店铺售后出现的问题与TCF无任何关系。TCF只提供快捷的京东购买入口。
                 <br><br>
-                22.网页中涉及所有TCF客服均无危险，进入微信之后跳出的窗口可能会提示：“该企业尚未经过认证，安全性未知，请注意在沟通中保护个人隐私和财产安全。”属于正常现象，点击弹窗下面【发起聊天】按钮可以继续与TCF客服进行对话。原因：TCF为3人小团体，企业微信团队认证费目前并没有太多的经费，后续有时间会在企业微信认证。
+                22.网页中涉及所有TCF客服均无危险，进入微信之后跳出的窗口可能会提示："该企业尚未经过认证，安全性未知，请注意在沟通中保护个人隐私和财产安全。"属于正常现象，点击弹窗下面【发起聊天】按钮可以继续与TCF客服进行对话。原因：TCF为3人小团体，企业微信团队认证费目前并没有太多的经费，后续有时间会在企业微信认证。
                 <br><br>
                 23.页脚的品牌按钮并非恶意引用，仅用于快捷访问所对应品牌的官网/首页。
             </p>
@@ -1342,12 +1408,20 @@
         <div class="modal-content">
             <h2>更新日志</h2>
             <p>
-		<strong>2025.3.22</strong><br>
-		- 添加了【硬件安全温度与发热因素】模块折叠功能<br>
-		- 添加了可折叠的【硬件知识】模块<br>
-		- 添加了FAQ问题<br>
-		- 修改了所有英特尔与英伟达品牌方的大小写<br>
-		- 删除了一个导航栏按钮<br>
+		<strong>2025.3.28</strong><br>
+		- 调整了网页在移动端的协调性，详细：<br>
+		1.在移动端(≤768px)时，导航栏会隐藏到屏幕左侧外<br>
+		2.左上角显示汉堡菜单按钮(☰)，点击可展开/收起导航栏<br>
+		3.导航栏竖向排列，每个按钮一行，使用垂直文字方向<br>
+		4.点击导航外部区域可自动收起导航栏<br>
+		5.在桌面端(>768px)保持原有导航样式不变<br>
+		- 添加了窗口大小改变时的响应式处理<br>
+                <strong>2025.3.22</strong><br>
+                - 添加了【硬件安全温度与发热因素】模块折叠功能<br>
+                - 添加了可折叠的【硬件知识】模块<br>
+                - 添加了FAQ问题<br>
+                - 修改了所有英特尔与英伟达品牌方的大小写<br>
+                - 删除了一个导航栏按钮<br>
                 <strong>2025.3.21</strong><br>
                 - 添加了【硬件安全温度与发热因素】模块<br>
                 - 调节页面协调性<br>
@@ -1632,6 +1706,30 @@
             hardwareGrid.classList.toggle('expanded');
             arrow.textContent = hardwareGrid.classList.contains('expanded') ? '▲' : '▼';
         }
+
+        // 移动端导航切换功能
+        function toggleMobileNav() {
+            const nav = document.getElementById('mainNav');
+            nav.classList.toggle('active');
+        }
+
+        // 点击导航外部关闭导航
+        document.addEventListener('click', function(e) {
+            const nav = document.getElementById('mainNav');
+            const navToggle = document.querySelector('.nav-toggle');
+            if (window.innerWidth <= 768 && 
+                !nav.contains(e.target) && 
+                e.target !== navToggle && 
+                !navToggle.contains(e.target)) {
+                nav.classList.remove('active');
+            }
+        });
+
+        // 窗口大小改变时重新设置画布尺寸
+        window.addEventListener('resize', function() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
     </script>
 </body>
 </html>
