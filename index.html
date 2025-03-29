@@ -23,6 +23,7 @@
             --button-hover-gradient: linear-gradient(135deg, #8E44AD, #6C5CE7);
             --button-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             --jd-color: #e1251b; /* 京东主题色 */
+            --section-bg: rgba(255, 255, 255, 0.9); /* 新增模块背景色 */
         }
 
         body {
@@ -48,6 +49,7 @@
             --button-gradient: linear-gradient(135deg, #8E44AD, #6C5CE7);
             --button-hover-gradient: linear-gradient(135deg, #6C5CE7, #8E44AD);
             --jd-color: #ff4d4d; /* 暗色模式下的京东主题色 */
+            --section-bg: rgba(42, 42, 42, 0.9); /* 暗色模式下的模块背景色 */
         }
 
         header {
@@ -376,7 +378,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: transparent; /* 背景改为透明 */
+            background: transparent;
         }
 
         .brand-btn img {
@@ -462,7 +464,7 @@
 
         .dark-mode-toggle {
             position: fixed;
-            bottom: 80px; /* 调整到右下角 */
+            bottom: 80px;
             right: 20px;
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(var(--blur-intensity));
@@ -481,11 +483,12 @@
             background: rgba(255, 255, 255, 0.3);
         }
 
+        /* 修改FAQ模块背景 */
         .faq-section {
             max-width: 1200px;
             margin: 2rem auto;
             padding: 2rem;
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--section-bg);
             border-radius: 12px;
             box-shadow: var(--button-shadow);
             backdrop-filter: blur(var(--blur-intensity));
@@ -504,7 +507,7 @@
             margin-bottom: 1rem;
             border-radius: 12px;
             overflow: hidden;
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--section-bg);
             backdrop-filter: blur(var(--blur-intensity));
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -558,15 +561,16 @@
         }
 
         .faq-item.active .faq-answer {
-            max-height: 500px; /* 根据需要调整 */
+            max-height: 500px;
             padding: 1.5rem;
         }
 
+        /* 修改温度信息模块背景 */
         .temperature-info {
             max-width: 1200px;
             margin: 2rem auto;
             padding: 2rem;
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--section-bg);
             border-radius: 12px;
             box-shadow: var(--button-shadow);
             backdrop-filter: blur(var(--blur-intensity));
@@ -579,7 +583,7 @@
             margin-bottom: 2rem;
             font-size: 2rem;
             color: var(--text-color);
-            cursor: pointer; /* 添加点击手势 */
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -605,12 +609,12 @@
         }
 
         .temperature-grid.expanded {
-            max-height: 1000px; /* 根据需要调整 */
+            max-height: 1000px;
             padding-top: 1.5rem;
         }
 
         .temperature-card {
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--section-bg);
             padding: 1.5rem;
             border-radius: 12px;
             backdrop-filter: blur(var(--blur-intensity));
@@ -643,12 +647,12 @@
             margin-bottom: 0.5rem;
         }
 
-        /* 硬件知识模块样式 */
+        /* 修改硬件知识模块背景 */
         .hardware-knowledge {
             max-width: 1200px;
             margin: 2rem auto;
             padding: 2rem;
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--section-bg);
             border-radius: 12px;
             box-shadow: var(--button-shadow);
             backdrop-filter: blur(var(--blur-intensity));
@@ -687,12 +691,12 @@
         }
 
         .hardware-grid.expanded {
-            max-height: 2000px; /* 根据需要调整 */
+            max-height: 2000px;
             padding-top: 1.5rem;
         }
 
         .hardware-card {
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--section-bg);
             padding: 1.5rem;
             border-radius: 12px;
             backdrop-filter: blur(var(--blur-intensity));
@@ -725,12 +729,12 @@
             margin-bottom: 0.5rem;
         }
 
-        /* 知名品牌介绍模块 */
+        /* 修改品牌介绍模块背景 */
         .brands-section {
             max-width: 1200px;
             margin: 2rem auto;
             padding: 2rem;
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--section-bg);
             border-radius: 12px;
             box-shadow: var(--button-shadow);
             backdrop-filter: blur(var(--blur-intensity));
@@ -769,12 +773,12 @@
         }
 
         .brands-grid.expanded {
-            max-height: 3000px; /* 根据需要调整 */
+            max-height: 3000px;
             padding-top: 1.5rem;
         }
 
         .brand-card {
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--section-bg);
             padding: 1.5rem;
             border-radius: 12px;
             backdrop-filter: blur(var(--blur-intensity));
@@ -1422,7 +1426,7 @@
         <p>© 2025 TCF | 硬件管理定制化服务框架</p>
         <p style="font-size: 0.8rem; margin-top: 1rem;">网站现已对移动端开放 | 移动端页面仍然会有不协调 | 请谅解</p>
         <p style="font-size: 0.8rem; margin-top: 1rem;">TCF目前还是小团体，网站正在逐步改进，请谅解...</p>
-        <p style="font-size: 0.8rem; margin-top: 1rem;">版本号：2.06.8/2.06.8</p>
+        <p style="font-size: 0.8rem; margin-top: 1rem;">版本号：2.06.9/2.06.9</p>
     </footer>
 
     <!-- 团队介绍弹窗 -->
