@@ -485,7 +485,7 @@
             max-width: 1200px;
             margin: 2rem auto;
             padding: 2rem;
-            background: var(--card-bg);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 12px;
             box-shadow: var(--button-shadow);
             backdrop-filter: blur(var(--blur-intensity));
@@ -566,7 +566,7 @@
             max-width: 1200px;
             margin: 2rem auto;
             padding: 2rem;
-            background: var(--card-bg);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 12px;
             box-shadow: var(--button-shadow);
             backdrop-filter: blur(var(--blur-intensity));
@@ -648,7 +648,7 @@
             max-width: 1200px;
             margin: 2rem auto;
             padding: 2rem;
-            background: var(--card-bg);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 12px;
             box-shadow: var(--button-shadow);
             backdrop-filter: blur(var(--blur-intensity));
@@ -723,6 +723,87 @@
 
         .hardware-card ul li {
             margin-bottom: 0.5rem;
+        }
+
+        /* 知名品牌介绍模块 */
+        .brands-section {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            box-shadow: var(--button-shadow);
+            backdrop-filter: blur(var(--blur-intensity));
+            animation: fadeIn 1s ease-out 2s;
+            animation-fill-mode: both;
+        }
+
+        .brands-section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            color: var(--text-color);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .brands-section h2 .arrow {
+            margin-left: 0.5rem;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .brands-section h2:hover {
+            color: var(--accent-color);
+        }
+
+        .brands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+        }
+
+        .brands-grid.expanded {
+            max-height: 3000px; /* 根据需要调整 */
+            padding-top: 1.5rem;
+        }
+
+        .brand-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            backdrop-filter: blur(var(--blur-intensity));
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .brand-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .brand-card h3 {
+            margin-top: 0;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .brand-card h3 img {
+            width: 40px;
+            height: 40px;
+            margin-right: 1rem;
+            object-fit: contain;
+        }
+
+        .brand-card p {
+            margin: 0.5rem 0;
+            color: var(--text-color);
         }
 
         /* 渐入动画 */
@@ -1242,6 +1323,86 @@
         </div>
     </section>
 
+    <!-- 知名品牌介绍模块 -->
+    <section class="brands-section">
+        <h2 onclick="toggleBrandsSection()">
+            知名品牌介绍
+            <span class="arrow">▼</span>
+        </h2>
+        <div class="brands-grid" id="brandsGrid">
+            <!-- 华硕 -->
+            <div class="brand-card">
+                <h3><img src="https://img.expreview.com/brands/logo/asus.png" alt="华硕">华硕 (ASUS)</h3>
+                <p>全球领先的3C解决方案提供商，主板和显卡市场份额长期位居全球第一，以"坚如磐石"的品质著称。</p>
+            </div>
+            <!-- 七彩虹 -->
+            <div class="brand-card">
+                <h3><img src="https://img.expreview.com/brands/logo/colorful.png" alt="七彩虹">七彩虹 (Colorful)</h3>
+                <p>中国大陆知名的电脑硬件品牌，显卡市场份额位居国内前列，以高性价比和创新设计著称。</p>
+            </div>
+            <!-- 技嘉 -->
+            <div class="brand-card">
+                <h3><img src="https://pic.mksucai.com/00/22/49/0f1657f8c48bbc39.webp" alt="技嘉">技嘉 (GIGABYTE)</h3>
+                <p>台湾知名硬件制造商，主板和显卡产品以超耐久技术和创新散热设计闻名。</p>
+            </div>
+            <!-- 微星 -->
+            <div class="brand-card">
+                <h3><img src="https://y.zdmimg.com/202102/19/602f89edd70a92130.jpg_a200.jpg" alt="微星">微星 (MSI)</h3>
+                <p>全球知名电竞硬件品牌，主板和显卡产品以出色的性能和炫酷的RGB灯效著称。</p>
+            </div>
+            <!-- 金士顿 -->
+            <div class="brand-card">
+                <h3><img src="https://www.kingston.com.cn/Themes/KingstonRWD/images/logos/kingston-logo-blkText.svg" alt="金士顿">金士顿 (Kingston)</h3>
+                <p>全球最大的独立内存产品制造商，内存和SSD产品以稳定性和兼容性著称。</p>
+            </div>
+            <!-- 英睿达 -->
+            <div class="brand-card">
+                <h3><img src="https://www.crucial.cn/content/dam/crucial/marketing-assets/web/logos/chinese/micron-crucial-logo-blk-r-cmyk-zh.cqdam.preview.png/_jcr_content/renditions/cq5dam.thumbnail.319.319.png" alt="英睿达">英睿达 (Crucial)</h3>
+                <p>美光科技旗下品牌，专注于内存和SSD产品，以原厂颗粒和稳定性能著称。</p>
+            </div>
+            <!-- 索泰 -->
+            <div class="brand-card">
+                <h3><img src="https://img.expreview.com/brands/logo/zotac.png" alt="索泰">索泰 (ZOTAC)</h3>
+                <p>香港PC Partner集团旗下品牌，专注于显卡和迷你PC产品，以创新设计和紧凑尺寸著称。</p>
+            </div>
+            <!-- 影驰 -->
+            <div class="brand-card">
+                <h3><img src="https://www.szgalaxy.com/assets/logo-4565f299.png" alt="影驰">影驰 (GALAX)</h3>
+                <p>香港知名硬件品牌，显卡产品以炫酷外观和出色散热设计著称。</p>
+            </div>
+            <!-- 海盗船 -->
+            <div class="brand-card">
+                <h3><img src="https://www.szthekey.com/wp-content/uploads/2020/11/3uQZze.jpg" alt="海盗船">海盗船 (Corsair)</h3>
+                <p>全球知名高性能PC外设和组件品牌，内存、电源和散热产品以高品质著称。</p>
+            </div>
+            <!-- 酷冷至尊 -->
+            <div class="brand-card">
+                <h3><img src="https://images.sj33.cn/uploads/202010/7-201025235101R9.jpg" alt="酷冷至尊">酷冷至尊 (Cooler Master)</h3>
+                <p>全球领先的PC散热解决方案提供商，散热器和机箱产品以创新设计和出色性能著称。</p>
+            </div>
+            <!-- 英特尔 -->
+            <div class="brand-card">
+                <h3><img src="https://img.expreview.com/brands/logo/intel.png" alt="英特尔">英特尔 (Intel)</h3>
+                <p>全球最大的半导体公司之一，CPU市场份额长期位居全球第一，以稳定性和兼容性著称。</p>
+            </div>
+            <!-- 英伟达 -->
+            <div class="brand-card">
+                <h3><img src="https://img.expreview.com/brands/logo/nv.png" alt="英伟达">英伟达 (NVIDIA)</h3>
+                <p>全球领先的图形技术公司，独立显卡市场份额长期位居全球前列，以创新技术和出色性能著称。</p>
+            </div>
+            <!-- AMD -->
+            <div class="brand-card">
+                <h3><img src="https://img.expreview.com/brands/logo/amd.png" alt="AMD">AMD</h3>
+                <p>全球领先的半导体公司，CPU和显卡产品以高性价比和创新架构著称。</p>
+            </div>
+            <!-- 金河田 -->
+            <div class="brand-card">
+                <h3><img src="https://img.expreview.com/brands/logo/goldenfield.png" alt="金河田">金河田 (Golden Field)</h3>
+                <p>国内知名机电品牌，机箱和电源产品以高性价比和实用设计著称。</p>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <div class="footer-buttons">
             <button class="footer-btn" onclick="scrollToTop()">返回顶部</button>
@@ -1271,7 +1432,7 @@
         <p>© 2025 TCF | 硬件管理定制化服务框架</p>
         <p style="font-size: 0.8rem; margin-top: 1rem;">网站现已对移动端开放 | 移动端页面仍然会有不协调 | 请谅解</p>
         <p style="font-size: 0.8rem; margin-top: 1rem;">TCF目前还是小团体，网站正在逐步改进，请谅解...</p>
-        <p style="font-size: 0.8rem; margin-top: 1rem;">版本号：2.05.8/2.05.8</p>
+        <p style="font-size: 0.8rem; margin-top: 1rem;">版本号：2.06.8/2.06.8</p>
     </footer>
 
     <!-- 团队介绍弹窗 -->
@@ -1398,6 +1559,8 @@
                 22.网页中涉及所有TCF客服均无危险，进入微信之后跳出的窗口可能会提示："该企业尚未经过认证，安全性未知，请注意在沟通中保护个人隐私和财产安全。"属于正常现象，点击弹窗下面【发起聊天】按钮可以继续与TCF客服进行对话。原因：TCF为3人小团体，企业微信团队认证费目前并没有太多的经费，后续有时间会在企业微信认证。
                 <br><br>
                 23.页脚的品牌按钮并非恶意引用，仅用于快捷访问所对应品牌的官网/首页。
+                <br><br>
+                24.知名品牌模块中的任何一个品牌，都不是TCF的恶意引用。
             </p>
             <button class="modal-close-btn" onclick="closeUserAgreementModal()">关闭</button>
         </div>
@@ -1408,14 +1571,19 @@
         <div class="modal-content">
             <h2>更新日志</h2>
             <p>
-		<strong>2025.3.28</strong><br>
-		- 调整了网页在移动端的协调性，详细：<br>
-		1.在移动端(≤768px)时，导航栏会隐藏到屏幕左侧外<br>
-		2.左上角显示汉堡菜单按钮(☰)，点击可展开/收起导航栏<br>
-		3.导航栏竖向排列，每个按钮一行，使用垂直文字方向<br>
-		4.点击导航外部区域可自动收起导航栏<br>
-		5.在桌面端(>768px)保持原有导航样式不变<br>
-		- 添加了窗口大小改变时的响应式处理<br>
+                <strong>2025.3.28</strong><br>
+                - 添加了知名品牌介绍模块<br>
+                - 在用户协议中添加了关于品牌介绍的条款<br>
+                - 将FAQ设置为可折叠式<br>
+                - 美化了FAQ、硬件安全温度与发热因素、硬件知识、知名品牌介绍模块的样式<br>
+                - 将页脚版本号更新为2.06.8/2.06.8<br>
+                - 调整了网页在移动端的协调性，详细：<br>
+                1.在移动端(≤768px)时，导航栏会隐藏到屏幕左侧外<br>
+                2.左上角显示汉堡菜单按钮(☰)，点击可展开/收起导航栏<br>
+                3.导航栏竖向排列，每个按钮一行，使用垂直文字方向<br>
+                4.点击导航外部区域可自动收起导航栏<br>
+                5.在桌面端(>768px)保持原有导航样式不变<br>
+                - 添加了窗口大小改变时的响应式处理<br>
                 <strong>2025.3.22</strong><br>
                 - 添加了【硬件安全温度与发热因素】模块折叠功能<br>
                 - 添加了可折叠的【硬件知识】模块<br>
@@ -1705,6 +1873,14 @@
             const arrow = document.querySelector('.hardware-knowledge h2 .arrow');
             hardwareGrid.classList.toggle('expanded');
             arrow.textContent = hardwareGrid.classList.contains('expanded') ? '▲' : '▼';
+        }
+
+        // 知名品牌介绍模块展开/折叠功能
+        function toggleBrandsSection() {
+            const brandsGrid = document.getElementById('brandsGrid');
+            const arrow = document.querySelector('.brands-section h2 .arrow');
+            brandsGrid.classList.toggle('expanded');
+            arrow.textContent = brandsGrid.classList.contains('expanded') ? '▲' : '▼';
         }
 
         // 移动端导航切换功能
