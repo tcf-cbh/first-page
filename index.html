@@ -48,7 +48,7 @@
         body.mixed-mode {
             --primary-color: #2a2a2a;
             --text-color: #2a2a2a;
-            --gradient-bg: #ffffff;
+            --gradient-bg: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); /* 修改为深色背景 */
             --header-bg: rgba(42, 42, 42, 0.9);
             --header-text: #f5f5f5;
             --card-bg: rgba(255, 255, 255, 0.9);
@@ -1816,7 +1816,7 @@
         function toggleTheme() {
             const body = document.body;
             const darkModeToggle = document.querySelector('.dark-mode-toggle');
-            
+          
             if (body.classList.contains('dark-mode')) {
                 // 当前是暗色模式，切换到混合模式
                 body.classList.remove('dark-mode');
