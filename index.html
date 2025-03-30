@@ -24,15 +24,7 @@
             --button-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             --jd-color: #e1251b; /* 京东主题色 */
             --section-bg: rgba(255, 255, 255, 0.9); /* 新增模块背景色 */
-        }
-
-        body {
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            margin: 0;
-            background: var(--gradient-bg);
-            color: var(--text-color);
-            line-height: 1.6;
-            transition: background 0.3s ease, color 0.3s ease;
+            --theme-name: 'light'; /* 默认主题 */
         }
 
         body.dark-mode {
@@ -50,6 +42,34 @@
             --button-hover-gradient: linear-gradient(135deg, #6C5CE7, #8E44AD);
             --jd-color: #ff4d4d; /* 暗色模式下的京东主题色 */
             --section-bg: rgba(42, 42, 42, 0.9); /* 暗色模式下的模块背景色 */
+            --theme-name: 'dark'; /* 暗色主题 */
+        }
+
+        body.mixed-mode {
+            --primary-color: #2a2a2a;
+            --text-color: #2a2a2a;
+            --gradient-bg: linear-gradient(135deg, #f5f7fa 0%, #1a1a1a 100%);
+            --header-bg: rgba(255, 255, 255, 0.8);
+            --header-text: #2a2a2a;
+            --card-bg: rgba(42, 42, 42, 0.8);
+            --footer-bg: rgba(255, 255, 255, 0.8);
+            --footer-text: #2a2a2a;
+            --nav-bg: rgba(42, 42, 42, 0.8);
+            --nav-text: #f5f5f5;
+            --button-gradient: linear-gradient(135deg, #6C5CE7, #8E44AD);
+            --button-hover-gradient: linear-gradient(135deg, #8E44AD, #6C5CE7);
+            --jd-color: #e1251b;
+            --section-bg: rgba(255, 255, 255, 0.7);
+            --theme-name: 'mixed'; /* 混合主题 */
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            margin: 0;
+            background: var(--gradient-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
         header {
@@ -81,6 +101,7 @@
             display: flex;
             justify-content: center;
             background: var(--nav-bg);
+            color: var(--nav-text);
             backdrop-filter: blur(var(--blur-intensity));
             position: sticky;
             top: 0;
@@ -939,7 +960,7 @@
     <button class="nav-toggle" onclick="toggleMobileNav()">☰</button>
     <canvas class="particles"></canvas>
     <button class="toggle-particles" onclick="toggleParticles()">停止粒子运动</button>
-    <button class="dark-mode-toggle" onclick="toggleDarkMode()">☾</button>
+    <button class="dark-mode-toggle" onclick="toggleTheme()">☾</button>
 
     <header>
         <h1>Total Customization Framework</h1>
@@ -1426,7 +1447,7 @@
         <p>© 2025 TCF | 硬件管理定制化服务框架</p>
         <p style="font-size: 0.8rem; margin-top: 1rem;">网站现已对移动端开放 | 移动端页面仍然会有不协调 | 请谅解</p>
         <p style="font-size: 0.8rem; margin-top: 1rem;">TCF目前还是小团体，网站正在逐步改进，请谅解...</p>
-        <p style="font-size: 0.8rem; margin-top: 1rem;">版本号：2.06.9/2.06.9</p>
+        <p style="font-size: 0.8rem; margin-top: 1rem;">版本号：2.07.0/2.07.0</p>
     </footer>
 
     <!-- 团队介绍弹窗 -->
@@ -1565,6 +1586,10 @@
         <div class="modal-content">
             <h2>更新日志</h2>
             <p>
+                <strong>2025.3.30</strong><br>
+                - 新增亮暗色结合主题风格<br>
+                - 更新版本号为2.07.0/2.07.0<br>
+                <br>
                 <strong>2025.3.28</strong><br>
                 - 添加了知名品牌介绍模块<br>
                 - 在用户协议中添加了关于品牌介绍的条款<br>
@@ -1787,15 +1812,24 @@
             }
         });
 
-        // 暗色模式切换功能
-        function toggleDarkMode() {
+        // 主题切换功能
+        function toggleTheme() {
             const body = document.body;
-            body.classList.toggle('dark-mode');
             const darkModeToggle = document.querySelector('.dark-mode-toggle');
+            
             if (body.classList.contains('dark-mode')) {
+                // 当前是暗色模式，切换到混合模式
+                body.classList.remove('dark-mode');
+                body.classList.add('mixed-mode');
                 darkModeToggle.textContent = '☀';
-            } else {
+            } else if (body.classList.contains('mixed-mode')) {
+                // 当前是混合模式，切换到亮色模式
+                body.classList.remove('mixed-mode');
                 darkModeToggle.textContent = '☾';
+            } else {
+                // 当前是亮色模式，切换到暗色模式
+                body.classList.add('dark-mode');
+                darkModeToggle.textContent = '☀';
             }
         }
 
