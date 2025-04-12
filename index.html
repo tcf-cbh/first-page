@@ -954,6 +954,101 @@
                 display: none;
             }
         }
+
+        /* 添加法律协议内容的样式 */
+        .legal-content {
+            max-height: 60vh;
+            overflow-y: auto;
+            padding-right: 1rem;
+            line-height: 1.6;
+        }
+        
+        .legal-content h3 {
+            margin-top: 1.5rem;
+            color: var(--accent-color);
+        }
+        
+        .legal-content p, .legal-content ul {
+            margin-bottom: 1rem;
+        }
+        
+        .legal-content ul {
+            padding-left: 1.5rem;
+        }
+        
+        .legal-content a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        
+        .legal-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Cookie同意横幅样式 */
+        .cookie-consent-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--card-bg);
+            color: var(--text-color);
+            padding: 1rem;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            backdrop-filter: blur(var(--blur-intensity));
+        }
+        
+        .cookie-consent-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .cookie-consent-content p {
+            margin: 0;
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .cookie-consent-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-left: 1rem;
+        }
+        
+        .cookie-consent-buttons button {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .cookie-consent-buttons button:first-child {
+            background: var(--button-gradient);
+            color: white;
+        }
+        
+        .cookie-consent-buttons button:last-child {
+            background: transparent;
+            color: var(--text-color);
+            border: 1px solid var(--text-color);
+        }
+        
+        @media (max-width: 600px) {
+            .cookie-consent-content {
+                flex-direction: column;
+            }
+            
+            .cookie-consent-buttons {
+                margin: 1rem 0 0;
+                width: 100%;
+                justify-content: flex-end;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1425,7 +1520,10 @@
             <a href="https://www.wjx.cn/vm/wjcJuA7.aspx" class="footer-btn">提供建议</a>
             <a href="https://bilimubai-3l.lanzouv.com/iQi4M2onae8h" class="footer-btn">通知文件</a>
             <button class="footer-btn" onclick="sharePage()">分享页面</button>
-            <button class="footer-btn" onclick="openUserAgreementModal()">用户协议</button>
+            <button class="footer-btn" onclick="openLegalModal('userAgreement')">用户协议</button>
+            <button class="footer-btn" onclick="openLegalModal('privacyPolicy')">隐私政策</button>
+            <button class="footer-btn" onclick="openLegalModal('termsOfService')">服务条款</button>
+            <button class="footer-btn" onclick="openLegalModal('cookiePolicy')">Cookie政策</button>
         </div>
         <div class="brand-buttons">
             <a href="https://www.intel.cn" class="brand-btn" data-brand="英特尔">
@@ -1522,62 +1620,14 @@
         </div>
     </div>
 
-    <!-- 用户协议弹窗 -->
-    <div class="modal-overlay" id="userAgreementModal">
+    <!-- 法律协议弹窗 -->
+    <div class="modal-overlay" id="legalModal">
         <div class="modal-content">
-            <h2>用户协议</h2>
-            <p>
-                欢迎使用TCF服务！请仔细阅读以下用户协议：
-                <br><br>
-                1. 您同意遵守所有适用的法律法规，并对自己在TCF平台上的行为负责。
-                <br><br>
-                2. TCF保留随时修改本协议的权利，修改后的协议将在公布后立即生效。
-                <br><br>
-                3. 您不得利用TCF服务进行任何非法活动或侵犯他人权益的行为。
-                <br><br>
-                4. TCF不对因不可抗力导致的服务中断或数据丢失承担责任。
-                <br><br>
-                5. 如果您不同意本协议的条款，请立即停止使用TCF服务。
-                <br><br>
-                6. 不允许用户修改导航栏中【团队信息】【旗舰产品】所显示页面的文本内容。
-                <br><br>
-                7. 在跳转到微信客服页面之后，请于客服理性沟通。
-                <br><br>
-                8. 在投诉时，如果谎报投诉信息，TCF将不再对您提供服务，请自觉退出使用TCF平台，客服也将不会再对您的信息进行回复。
-                <br><br>
-                9.TCF(Total Customization Framework)是一个专注于电脑硬件定制化的品牌或服务框架，致力于为用户提供从硬件配置到装机指导的一站式服务。不提供以外的服务。
-                <br><br>
-                10.全面性（Total）：覆盖从 CPU、显卡、主板到散热系统、机箱等所有硬件组件的定制配置。
-                <br><br>
-                11.定制化（Customization）：根据用户需求（如游戏、设计、办公等）提供个性化的硬件配置方案。
-                <br><br>
-                12.框架(Framework):提供一套完整的服务体系，包括硬件推荐、装机指导等。
-                <br><br>
-                13.TCF 为用户提供个性化、高性能的电脑硬件解决方案。
-                <br><br>
-                14.TCF 在硬件性能和外观设计上的双重优势并非极端。
-                <br><br>
-                15.TCF 以用户需求为核心定制化服务理念。
-                <br><br>
-                16.提供详细的装机教程和视频，帮助用户轻松完成电脑组装。
-                <br><br>
-                17.提供在线技术支持，解决装机过程中遇到的问题。
-                <br><br>
-                18.用户在接受装机指导时，需要阅读该协议，若因为用户没有仔细阅读该协议的内容造成的主观侵权TCF不负责。
-                <br><br>
-                19.装机指导为微信视频通话，在线指导。若不同意视频电话，则无法享受该服务
-                <br><br>
-                20.第三方网站的客服问题与TCF无关，请注意辨别。若因为第三方客服问题联系TCF客服的，TCF不会给予处理。
-                <br><br>
-                21.京东客服链接非TCF恶意引入，且京东店铺售后出现的问题与TCF无任何关系。TCF只提供快捷的京东购买入口。
-                <br><br>
-                22.网页中涉及所有TCF客服均无危险，进入微信之后跳出的窗口可能会提示："该企业尚未经过认证，安全性未知，请注意在沟通中保护个人隐私和财产安全。"属于正常现象，点击弹窗下面【发起聊天】按钮可以继续与TCF客服进行对话。原因：TCF为3人小团体，企业微信团队认证费目前并没有太多的经费，后续有时间会在企业微信认证。
-                <br><br>
-                23.页脚的品牌按钮并非恶意引用，仅用于快捷访问所对应品牌的官网/首页。
-                <br><br>
-                24.知名品牌模块中的任何一个品牌，都不是TCF的恶意引用。
-            </p>
-            <button class="modal-close-btn" onclick="closeUserAgreementModal()">关闭</button>
+            <h2 id="legalModalTitle">法律协议</h2>
+            <div id="legalModalContent" class="legal-content">
+                <!-- 内容将通过JavaScript动态加载 -->
+            </div>
+            <button class="modal-close-btn" onclick="closeLegalModal()">关闭</button>
         </div>
     </div>
 
@@ -1735,38 +1785,237 @@
             setTimeout(() => notification.remove(), 3000);
         }
 
-        // 新增用户协议弹窗功能
-        function openUserAgreementModal() {
-            const modal = document.getElementById('userAgreementModal');
-            modal.classList.add('active');
+        // 法律协议内容
+        const legalDocuments = {
+            userAgreement: {
+                title: "用户协议",
+                content: `
+                    <h3>1. 协议接受</h3>
+                    <p>通过访问和使用TCF网站，您同意遵守本用户协议的所有条款和条件。如果您不同意这些条款，请立即停止使用本网站。</p>
+                    
+                    <h3>2. 服务描述</h3>
+                    <p>TCF提供电脑硬件配置推荐、装机指导等相关服务。我们保留随时修改或终止服务的权利，恕不另行通知。</p>
+                    
+                    <h3>3. 用户责任</h3>
+                    <p>您同意：</p>
+                    <ul>
+                        <li>提供准确、完整的注册信息</li>
+                        <li>对您的账户和密码保密</li>
+                        <li>不从事任何非法活动或侵犯他人权利的行为</li>
+                        <li>不干扰或破坏网站的正常运行</li>
+                    </ul>
+                    
+                    <h3>4. 知识产权</h3>
+                    <p>网站上的所有内容，包括但不限于文本、图形、徽标、按钮图标、图像、音频剪辑、数字下载、数据编译和软件，均为TCF或其内容提供者的财产，受版权法保护。</p>
+                    
+                    <h3>5. 免责声明</h3>
+                    <p>TCF不对以下情况承担责任：</p>
+                    <ul>
+                        <li>服务中断或延迟</li>
+                        <li>数据传输错误或丢失</li>
+                        <li>未经授权的访问或数据更改</li>
+                        <li>因使用本网站而导致的任何直接或间接损失</li>
+                    </ul>
+                    
+                    <h3>6. 协议修改</h3>
+                    <p>TCF保留随时修改本协议的权利。修改后的协议将在网站上公布后立即生效。您应定期查看本协议以了解变更。</p>
+                    
+                    <h3>7. 适用法律</h3>
+                    <p>本协议受中华人民共和国法律管辖并按其解释。任何争议应提交有管辖权的法院解决。</p>
+                    
+                    <p>最后更新日期：2025年4月</p>
+                `
+            },
+            privacyPolicy: {
+                title: "隐私政策",
+                content: `
+                    <h3>1. 信息收集</h3>
+                    <p>我们可能收集以下信息：</p>
+                    <ul>
+                        <li>个人身份信息（如姓名、电子邮件地址、电话号码）</li>
+                        <li>设备信息（如IP地址、浏览器类型、操作系统）</li>
+                        <li>使用数据（如访问的页面、点击的链接）</li>
+                    </ul>
+                    
+                    <h3>2. 信息使用</h3>
+                    <p>我们使用收集的信息用于：</p>
+                    <ul>
+                        <li>提供和改进我们的服务</li>
+                        <li>回应您的询问和请求</li>
+                        <li>发送重要通知</li>
+                        <li>进行数据分析</li>
+                    </ul>
+                    
+                    <h3>3. 信息共享</h3>
+                    <p>我们不会出售或出租您的个人信息。我们可能在以下情况下共享信息：</p>
+                    <ul>
+                        <li>获得您的明确同意</li>
+                        <li>遵守法律要求或响应法律程序</li>
+                        <li>保护TCF及其用户的权利和财产</li>
+                    </ul>
+                    
+                    <h3>4. Cookie和技术</h3>
+                    <p>我们使用Cookie和类似技术来增强用户体验、分析网站使用情况。您可以通过浏览器设置管理Cookie偏好。</p>
+                    
+                    <h3>5. 数据安全</h3>
+                    <p>我们采取合理的安全措施保护您的信息，但无法保证互联网传输的绝对安全。</p>
+                    
+                    <h3>6. 儿童隐私</h3>
+                    <p>我们的服务不面向13岁以下儿童。如果我们发现收集了13岁以下儿童的信息，将立即删除。</p>
+                    
+                    <h3>7. 您的权利</h3>
+                    <p>您有权：</p>
+                    <ul>
+                        <li>访问、更正或删除您的个人信息</li>
+                        <li>限制或反对处理您的数据</li>
+                        <li>撤回同意</li>
+                    </ul>
+                    
+                    <h3>8. 政策变更</h3>
+                    <p>我们可能更新本政策。重大变更将在网站上公布。</p>
+                    
+                    <p>最后更新日期：2025年4月</p>
+                `
+            },
+            termsOfService: {
+                title: "服务条款",
+                content: `
+                    <h3>1. 服务概述</h3>
+                    <p>TCF提供电脑硬件配置推荐、装机指导等相关服务。服务可能随时变更，恕不另行通知。</p>
+                    
+                    <h3>2. 用户资格</h3>
+                    <p>使用本服务，您必须：</p>
+                    <ul>
+                        <li>达到法定年龄</li>
+                        <li>有能力签订具有法律约束力的合同</li>
+                        <li>未被禁止接受我们的服务</li>
+                    </ul>
+                    
+                    <h3>3. 用户行为准则</h3>
+                    <p>您同意不：</p>
+                    <ul>
+                        <li>从事任何非法活动</li>
+                        <li>上传或传播恶意软件</li>
+                        <li>干扰服务正常运行</li>
+                        <li>冒充他人或实体</li>
+                    </ul>
+                    
+                    <h3>4. 免责声明</h3>
+                    <p>服务按"原样"提供。TCF不保证：</p>
+                    <ul>
+                        <li>服务将满足您的特定需求</li>
+                        <li>服务将不间断、及时、安全或无错误</li>
+                        <li>结果的准确性或可靠性</li>
+                    </ul>
+                    
+                    <h3>5. 责任限制</h3>
+                    <p>在法律允许的最大范围内，TCF不对任何间接、附带、特殊、后果性或惩罚性损害承担责任。</p>
+                    
+                    <h3>6. 终止</h3>
+                    <p>我们可随时终止或暂停您的访问，恕不另行通知，原因包括但不限于违反本条款。</p>
+                    
+                    <h3>7. 第三方链接</h3>
+                    <p>网站可能包含第三方网站的链接。我们对这些网站的内容或实践不负责。</p>
+                    
+                    <h3>8. 完整协议</h3>
+                    <p>本条款构成您与TCF之间的完整协议，取代任何先前协议。</p>
+                    
+                    <p>最后更新日期：2025年4月</p>
+                `
+            },
+            cookiePolicy: {
+                title: "Cookie政策",
+                content: `
+                    <h3>1. 什么是Cookie</h3>
+                    <p>Cookie是网站存储在您设备上的小型文本文件，用于记住您的偏好和改善用户体验。</p>
+                    
+                    <h3>2. 我们使用的Cookie类型</h3>
+                    <p>我们使用以下类型的Cookie：</p>
+                    <ul>
+                        <li><strong>必要Cookie：</strong>使网站正常运行所必需</li>
+                        <li><strong>偏好Cookie：</strong>记住您的选择和偏好</li>
+                        <li><strong>统计Cookie：</strong>帮助我们了解用户如何使用网站</li>
+                    </ul>
+                    
+                    <h3>3. 第三方Cookie</h3>
+                    <p>我们可能允许第三方设置Cookie用于：</p>
+                    <ul>
+                        <li>分析服务（如Google Analytics）</li>
+                        <li>社交媒体功能</li>
+                        <li>广告服务</li>
+                    </ul>
+                    
+                    <h3>4. Cookie管理</h3>
+                    <p>您可以通过浏览器设置控制或删除Cookie。但禁用必要Cookie可能影响网站功能。</p>
+                    
+                    <h3>5. 您的选择</h3>
+                    <p>首次访问时，我们会请求您的Cookie偏好。您可以通过点击页面底部的"Cookie政策"随时更改设置。</p>
+                    
+                    <h3>6. 政策变更</h3>
+                    <p>我们可能更新本政策。重大变更将在网站上公布。</p>
+                    
+                    <p>最后更新日期：2025年4月</p>
+                `
+            }
+        };
+
+        // 法律协议弹窗功能
+        function openLegalModal(type) {
+            const modal = document.getElementById('legalModal');
+            const title = document.getElementById('legalModalTitle');
+            const content = document.getElementById('legalModalContent');
+            
+            if (legalDocuments[type]) {
+                title.textContent = legalDocuments[type].title;
+                content.innerHTML = legalDocuments[type].content;
+                modal.classList.add('active');
+            }
         }
 
-        function closeUserAgreementModal() {
-            const modal = document.getElementById('userAgreementModal');
+        function closeLegalModal() {
+            const modal = document.getElementById('legalModal');
             modal.classList.remove('active');
         }
 
         // 点击弹窗外部关闭弹窗
-        document.getElementById('userAgreementModal').addEventListener('click', function(e) {
+        document.getElementById('legalModal').addEventListener('click', function(e) {
             if (e.target === this) {
-                closeUserAgreementModal();
+                closeLegalModal();
             }
         });
 
-        // 分享页面功能
-        function sharePage() {
-            if (navigator.share) {
-                navigator.share({
-                    title: 'TCF | 配置单填写 | 装机指导',
-                    url: window.location.href
-                }).then(() => {
-                    showNotification('感谢分享！');
-                }).catch((error) => {
-                    showNotification('分享失败，请重试。');
-                });
-            } else {
-                showNotification('您的浏览器不支持分享功能，请手动复制链接。');
+        // 页面加载时检查Cookie同意
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!localStorage.getItem('cookieConsent')) {
+                showCookieConsent();
             }
+        });
+
+        // Cookie同意横幅
+        function showCookieConsent() {
+            const consentBanner = document.createElement('div');
+            consentBanner.className = 'cookie-consent-banner';
+            consentBanner.innerHTML = `
+                <div class="cookie-consent-content">
+                    <p>我们使用Cookie来提升您的浏览体验。继续使用本网站即表示您同意我们的<a href="#" onclick="openLegalModal('cookiePolicy'); return false;">Cookie政策</a>。</p>
+                    <div class="cookie-consent-buttons">
+                        <button onclick="acceptCookies()">接受</button>
+                        <button onclick="rejectCookies()">拒绝</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(consentBanner);
+        }
+
+        function acceptCookies() {
+            localStorage.setItem('cookieConsent', 'true');
+            document.querySelector('.cookie-consent-banner').remove();
+        }
+
+        function rejectCookies() {
+            localStorage.setItem('cookieConsent', 'false');
+            document.querySelector('.cookie-consent-banner').remove();
+            // 这里可以添加拒绝Cookie后的处理逻辑
         }
 
         // 返回顶部功能
@@ -1934,6 +2183,22 @@
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         });
+
+        // 分享页面功能
+        function sharePage() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'TCF | 配置单填写 | 装机指导',
+                    url: window.location.href
+                }).then(() => {
+                    showNotification('感谢分享！');
+                }).catch((error) => {
+                    showNotification('分享失败，请重试。');
+                });
+            } else {
+                showNotification('您的浏览器不支持分享功能，请手动复制链接。');
+            }
+        }
     </script>
 </body>
 </html>
